@@ -1,8 +1,14 @@
-# React + Vite
+React + Vite
+Following Project is live on https://652d76c9f045823db2580c8a--meek-gecko-77d61b.netlify.app/
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Backend Repo Link-https://github.com/Worriedhenry/MCS-backend
 
-Currently, two official plugins are available:
+The project contain following API end endpoint
+  1) GET https://mcs-backend-9d1v.onrender.com/search/"+name <-- To search for user with attribute "name"
+  2) GET https://mcs-backend-9d1v.onrender.com/searchAll  <-- To get all the user's name
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+To run on Your Local Machine
+  1) Clone The repo
+  2) Open the folder in Code Editor
+  3) run "npm install"
+  4) run "npm run dev"
