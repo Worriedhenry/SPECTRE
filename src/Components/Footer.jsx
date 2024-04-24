@@ -1,12 +1,12 @@
 export default function Footer() {
 
     return(
-        <div className=" md:px-20 px-8 py-10 overflow-hidden  bg-[linear-gradient(95.74deg,_#0076CE_-7.82%,_#9400D3_143.96%)] divide-y ">
+        <div className=" md:px-20 px-8 py-10 overflow-hidden md:mt-auto    bg-[linear-gradient(95.74deg,_#0076CE_-7.82%,_#9400D3_143.96%)] divide-y  ">
             <ul className="flex md:space-x-14 space-x-3 mb-8">
                 <li>
                     <ul className="space-y-5">
-                        <li><img src="/images/Logo_white.png" /></li>
-                        <li className="text-white md:max-w-[75%] text-[0.5rem] md:text-base">India's first platform dedicated to simplifying partner search</li>
+                        <li><img className=" max-w-full max-h-full w-32 " src="/images/SPECTRE_LOGO_WHITE.webp"  /></li>
+                        <li className="text-white md:max-w-[75%] text-[0.5rem] md:text-base">India's first platform dedicated to simplifying service search</li>
                     </ul>
                 </li>
                 <li>
@@ -49,15 +49,15 @@ export default function Footer() {
                     </ul>
                 </li>
             </ul>
-            <div className="mt-8 flex items-center justify-between">
-                <p className="mt-8 text-white flex text-[0.5rem] md:text-base">
+            <div className="mt-8 pt-8 flex items-center justify-between">
+                <p className=" text-white flex text-[0.5rem] md:text-base">
                 Sambhaji Nagar, No2, St. Antony Road, Chembur, Mumbai - 400071, Maharashtra
                 </p>
                 <ul className="flex items-center space-x-4 ">
-                    <li><img src="/images/facebook.png" /></li>
-                    <li><img src="/images/Insta.png" /></li>
-                    <li><img src="/images/linkedin_logo.png" /></li>
-                    <li><img src="/images/Whatsapp.png" /></li>
+                    <li><img src="/images/facebook.webp" /></li>
+                    <li><img src="/images/Insta.webp" /></li>
+                    <li><img src="/images/linkedin_logo.webp" /></li>
+                    <li><img src="/images/Whatsapp.webp" /></li>
                 </ul>
             </div>
         </div>

@@ -1,0 +1,19 @@
+@keyframes slideIn {
+    0% {
+      transform: translateX(50%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  .animated-slide {
+    transition: opacity 0.5s;
+  }
+  
+  .animate-slide-in {
+    animation: slideIn 1s forwards;
+  }
+  

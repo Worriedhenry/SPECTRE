@@ -1,3 +1,42 @@
-.joinus{
-    background-image: url("images/Cloud_BackGradient.png");
+.joinus {
+  background-image: url("images/Cloud_BackGradient.png");
+}
+
+.hide-scroll-bar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scroll-bar::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes swapColors {
+  0% {
+    background: linear-gradient(95.74deg, #0076CE -7.82%, #9400D3 143.96%);
+  }
+
+  25% {
+    background: linear-gradient(95.74deg, #0076CE -7.82%, #9400D3 143.96%, #0076CE -7.82%);
+  }
+
+  50% {
+    background: linear-gradient(95.74deg, #9400D3 -7.82%, #0076CE 143.96%, #0076CE  -7.82%);
+  }
+
+  75% {
+
+    background: linear-gradient(95.74deg, #9400D3 -7.82%, #0076CE 143.96%, #9400D3 -7.82%);
+
+  }
+
+  100% {
+    background: linear-gradient(95.74deg, #9400D3 -7.82%, #0076CE 143.96%);
+  }
+}
+
+.bg-gradient-swap {
+  background: linear-gradient(95.74deg, #0076CE -7.82%, #9400D3 143.96%);
+  animation: swapColors 3s linear infinite;
+  background-clip: text;
 }

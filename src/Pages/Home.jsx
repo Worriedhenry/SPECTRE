@@ -11,7 +11,7 @@ export default function Home(){
             <Header/>
             <SearchComponent />
         </div>
-        <div className="bg-[url('images/Cloud_BackGradient.png')] ">
+        <div className="bg-[url('images/Cloud_BackGradient.png')] flex ">
             {/* <img className="absolute" src="images/Cloud_BackGradient.png" /> */}
             <JoinUs/>
         </div>

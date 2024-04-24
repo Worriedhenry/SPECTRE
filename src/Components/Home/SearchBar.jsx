@@ -26,7 +26,7 @@ export default function SearchComponent() {
     }
     const handleSearch=async ()=>{
         if (searchTerm.length>0){
-            navigate("search/"+searchTerm)
+            navigate("service/"+searchTerm)
         }
         
 
@@ -35,26 +35,25 @@ export default function SearchComponent() {
         setNoSuggestion(false)
         setSearchTerm(suggestion); // Update the input with the selected suggestion
         setSuggestions([]); // Clear the suggestions
-        // You can also trigger the search here if needed
       }
     return (
         <div className="md:px-20 px-8 md:my-36 flex flex-col md:flex-row  md:py-10 bg-[#FAFBFC] ">
             <div className="left md:max-w-[50%]">
-                <p className="relative inline-block text-xl text-center text-black font-bold md:text-6xl leading-normal ">
-                    Find <span className="text-transparent bg-clip-text bg-[linear-gradient(90.05deg,_#0076CE_43.35%,_#9400D3_65.11%)] md:text-6xl ">Partners</span> (CAs) available online
+                <p className="relative inline-block text-2xl font-bold leading-normal text-black md:text-left sm:text-center md:text-6xl ">
+                    Find <span className="text-transparent bg-clip-text bg-[linear-gradient(90.05deg,_#0076CE_43.35%,_#9400D3_65.11%)]  md:text-6xl ">Services</span> available online
                 </p>
                 <p className=" text-[#616161] mt-5 text-xs md:text-base ">
-                    <span className=" font-bold text-sm md:text-xl">Connect</span> with us where your services are listed and visible to a myriad of businesses seeking CA’s for compliance support
+                    <span className="text-sm font-bold  md:text-xl">Connect</span> with us where your services are listed and visible to a myriad of businesses seeking CA’s for compliance support
                 </p>
                 <div className="mt-12">
                     <form onSubmit={handleSearch}>
                         <div class="max-w-xl ">
                             <div class="flex rounded-md overflow-hidden w-full">
                                 <input type="text" value={searchTerm} onChange={(e)=>handleInputChange(e.target.value)} class="w-full rounded-md px-6 font-bold rounded-r-none border-2 border-[#BFBFBF]" placeholder="Search by name" />
-                                <button onClick={()=>handleSearch} className="bg-[#0076CE] text-white md:px-14 px-2 md:text-lg text-xs font-semibold py-4 rounded-r-md">Search</button>
+                                <button onClick={()=>handleSearch} className="hover:bg-[linear-gradient(95.74deg,_#9400D3_-7.82%,_#0076CE_143.96%)] focus:outline-none bg-[linear-gradient(95.74deg,_#0076CE_-7.82%,_#9400D3_143.96%)] text-white md:px-14 px-2 md:text-lg text-xs font-semibold py-4 rounded-r-md">Search</button>
                             </div>
                         </div>
-                        {searchTerm  &&<div className="mt-2 relative">
+                        {searchTerm  &&<div className="relative mt-2">
                             {suggestions.length==0 && NoSuggestion && <div>
                                 No user Found
                                 </div>}
@@ -67,11 +66,11 @@ export default function SearchComponent() {
                     </form>
                 </div>
             </div>
-            <div className="right h-fit mt-5 md:mt-0">
+            <div className="mt-5 right h-fit md:mt-0">
                 <ul className="flex h-full space-x-4">
-                    <li className="flex items-end"><img className="h-[90%]" src='images/Landing_triplet_left.png' /></li>
-                    <li className="flex items-start"><img className="h-[90%]" src='images/Landing_triplet_middle.png' /></li>
-                    <li className="flex items-center"><img className="h-[90%]" src='images/Landing_triplet_right.png' /></li>
+                    <li className="flex items-end"><img className="h-[90%]" src='images/Landing_triplet_left.webp' /></li>
+                    <li className="flex items-start"><img className="h-[90%]" src='images/Landing_triplet_middle.webp' /></li>
+                    <li className="flex items-center"><img className="h-[90%]" src='images/Landing_triplet_right.webp' /></li>
 
                 </ul>
             </div>
