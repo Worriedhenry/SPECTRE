@@ -3,7 +3,7 @@ import PersonalDetails from "./PersonalDetails";
 import About from "./About";
 import ExpandedWorkBrief from "./ExpandedWorkBrief";
 import RequestedPropsalPage from "./RequestPropsalForm";
-export default function SearchResult({ data }) {
+export default function SearchResult({ data,serviceId }) {
 
     const [tabs,setActiveTab]=useState(1)
 
@@ -17,8 +17,8 @@ export default function SearchResult({ data }) {
 
             <PersonalDetails data={data} setActiveTab={setActiveTab} />
             {/* <RequestedPropsalPage /> */}
-            {tabs===1 &&<About data={data.serviceProvider} />}
-            {tabs===2 && <RequestedPropsalPage />}
+            {tabs===1 &&<About data={data.serviceProvider} setActiveTab={setActiveTab} />}
+            {tabs===2 && <RequestedPropsalPage serviceName={data.serviceName} serviceId={serviceId} serviceProviderName={data.serviceProvider.username} serviceProviderId={data.serviceProvider._id} setActiveTabs={setActiveTab} />}
             {tabs===3 && <ExpandedWorkBrief workBrief={data.serviceBrief} setActiveTabs={setActiveTab}/>}
 
         </div>

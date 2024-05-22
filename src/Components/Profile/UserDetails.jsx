@@ -11,36 +11,33 @@ import { FaStar } from "react-icons/fa";
 import DetailedAbout from "./DetailedAbout";
 import RequestedProposal from "./RequestedPropsals";
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams,useNavigate } from "react-router-dom"
+import { useParams, useNavigate, useSearchParams } from "react-router-dom";
 import UserServices from "./userServices";
 
 export default function UserDetails({ data }) {
 
     const [activeTab, setActiveTab] = useState(1);
     const params = useParams();
+    const [searchParams] = useSearchParams();
     const userParamId = params.userId;
-    const dispatch = useDispatch()
-    const navigate=useNavigate()
+    const navigate = useNavigate()
     const { userId } = useSelector((state) => state.auth);
 
     const handleTabClick = (tabNumber) => {
         setActiveTab(tabNumber);
     };
+    useEffect(() => {
+        if (searchParams.get("tab") !== null && Number(searchParams.get("tab")) < 6) {
+            if (userId != userParamId && (searchParams.get("tab") == 3 || searchParams.get("tab") == 5)) {
+                setActiveTab(1)
+            }
+            else {
+                setActiveTab(Number(searchParams.get("tab")))
+            }
 
+        }
 
-    //  const data={user:{
-    //     userName:"Ankit Sharma",
-    //     _id:"123",
-    //     email:"j6HcH@example.com",
-    //     joined:"2022",
-    //     profileTags:["Fresher","Web Developer","Full Stack Developer", "MERN"],
-    //     services:["UI/UX","Frontend Development","Data analysis","Design"],
-    //     usp:["IITian","punctual","24/7 support"],
-    //     location:["301 Vikas Nagar","mumbai","India"],
-    //    Ranking:8.6,}
-
-    // } 
-
+    }, [])
 
     return (
         <div className="w-full p-6 bg-white md:w-3/4 rounded-xl ">
@@ -56,8 +53,8 @@ export default function UserDetails({ data }) {
                         <p className="text-sm text-slate-600">Report User</p>
                     </div>}
                     {data?.user?._id == userId && <div className="flex items-center space-x-5">
-                       <button onClick={()=>navigate("/modify/profile")} className=" text-sm font-medium bg-[linear-gradient(95.74deg,_#0076CE_-7.82%,_#9400D3_143.96%)] hover:bg-[linear-gradient(95.74deg,_#9400D3_-7.82%,_#0076CE_143.96%)] text-white py-1 px-2 rounded-md">Edit Profile</button>
-                       <button onClick={()=>navigate("/service/edit/?create=true")} className="text-sm font-medium bg-[linear-gradient(95.74deg,_#0076CE_-7.82%,_#9400D3_143.96%)] hover:bg-[linear-gradient(95.74deg,_#9400D3_-7.82%,_#0076CE_143.96%)] text-white py-1 px-2 rounded-md">Create service</button>
+                        <button onClick={() => navigate("/modify/profile")} className=" text-sm font-medium bg-[linear-gradient(95.74deg,_#0076CECE_-7.82%,_#9400D3CB_143.96%)] hover:bg-[linear-gradient(95.74deg,_#9400D3_-7.82%,_#0076CE_143.96%)] text-white py-1 px-2 rounded-md">Edit Profile</button>
+                        <button onClick={() => navigate("/modify/service/?create=true")} className="text-sm font-medium bg-[linear-gradient(95.74deg,_#0076CECE_-7.82%,_#9400D3CB_143.96%)] hover:bg-[linear-gradient(95.74deg,_#9400D3_-7.82%,_#0076CE_143.96%)] text-white py-1 px-2 rounded-md">Create service</button>
                     </div>}
                 </div>
                 <div className="p-2 md:hidden h-5/6">
@@ -68,34 +65,34 @@ export default function UserDetails({ data }) {
             <ul className="flex border-b-2  border-[#0076CE]  ">
                 <li
                     onClick={() => handleTabClick(1)}
-                    className={`cursor-pointer w-full md:w-[18.5%]  text-sm md:text-base font-medium hover:border-b hover:border-[#9400D3] parent group py-2 px-4 ${activeTab === 1 ? 'border-b border-blue-500 text-black ' : ''}  p-4 rounded-t-lg  hover:bg-gray-50 flex  items-center space-x-3 `}
+                    className={`cursor-pointer w-full md:w-[18.5%]  text-sm md:text-base font-medium hover:border-b hover:border-[#9400D3] parent group py-2 px-2 ${activeTab === 1 ? 'border-b border-blue-500 text-black ' : ''}   rounded-t-lg  hover:bg-gray-50 flex  items-center space-x-3 `}
                 >
                     <IoPerson className="hidden group-hover:animate-bounce md:block " /> <span className={` ${activeTab === 1 ? 'text-transparent bg-clip-text bg-[linear-gradient(95.74deg,_#0076CE_-7.82%,_#9400D3_143.96%)] font-bold ' : ''}   `} >About</span>
                 </li>
                 <li
                     onClick={() => handleTabClick(2)}
-                    className={`cursor-pointer w-full md:w-[18.5%] text-sm md:text-base font-medium parent hover:border-b hover:border-[#9400D3] group py-2 px-4 ${activeTab === 2 ? 'border-b border-blue-500 text-black' : ''}  p-4 rounded-t-lg  hover:bg-gray-50 flex items-center space-x-3 `}
+                    className={`cursor-pointer w-full md:w-[18.5%] text-sm md:text-base font-medium parent hover:border-b hover:border-[#9400D3] group py-2 px-2 ${activeTab === 2 ? 'border-b border-blue-500 text-black' : ''}   rounded-t-lg  hover:bg-gray-50 flex items-center space-x-3 `}
                 >
                     <FaPhoneAlt className="hidden group-hover:animate-bounce md:block" /> <span className={` ${activeTab === 2 ? 'text-transparent bg-clip-text bg-[linear-gradient(95.74deg,_#0076CE_-7.82%,_#9400D3_143.96%)]  font-bold' : ''}   `} >Contact</span>
                 </li>
-                <li
+                { userId==userParamId && <li
                     onClick={() => handleTabClick(3)}
                     className={`cursor-pointer w-full md:w-[30.5%]  text-sm md:text-base font-medium parent hover:border-b hover:border-[#9400D3] group py-2 px-4 ${activeTab === 3 ? 'border-b border-blue-500 text-black' : ''}  flex items-center space-x-3 p-4 rounded-t-lg  hover:bg-gray-50 `}
                 >
                     <IoIosDocument className="hidden group-hover:animate-bounce md:block" /> <span className={` ${activeTab === 3 ? 'text-transparent bg-clip-text bg-[linear-gradient(95.74deg,_#0076CE_-7.82%,_#9400D3_143.96%)] font-bold ' : ''}   `} ><span className="hidden md:inline">Requested</span> Proposals  </span>
-                </li>
+                </li>}
                 <li
                     onClick={() => handleTabClick(4)}
-                    className={`cursor-pointer  w-full md:w-[18.5%] text-sm md:text-base font-medium parent hover:border-b hover:border-[#9400D3] group py-2 px-4 ${activeTab === 4 ? 'border-b border-blue-500 text-black' : ''}  p-4 rounded-t-lg  hover:bg-gray-50 flex items-center space-x-1 `}
+                    className={`cursor-pointer  w-full md:w-[18.5%] text-sm md:text-base font-medium parent hover:border-b hover:border-[#9400D3] group py-2 px-2 ${activeTab === 4 ? 'border-b border-blue-500 text-black' : ''}   rounded-t-lg  hover:bg-gray-50 flex items-center space-x-1 `}
                 >
                     <MdDesignServices className="hidden group-hover:animate-bounce md:block" /><span className={` ${activeTab === 4 ? 'text-transparent bg-clip-text bg-[linear-gradient(95.74deg,_#0076CE_-7.82%,_#9400D3_143.96%)] font-bold ' : ''}   `} > Services</span>
                 </li>
-                <li
+                { userId==userParamId && <li
                     onClick={() => handleTabClick(5)}
-                    className={`cursor-pointer w-full md:w-[25%] text-sm md:text-base font-medium parent hover:border-b hover:border-[#9400D3] group py-2 px-4 ${activeTab === 5 ? 'border-b border-blue-500 text-black' : ''}  p-4 rounded-t-lg  hover:bg-gray-50 flex items-center space-x-1 `}
+                    className={`cursor-pointer w-full md:w-[25%] text-sm md:text-base font-medium parent hover:border-b hover:border-[#9400D3] group py-2 px-2 ${activeTab === 5 ? 'border-b border-blue-500 text-black' : ''}   rounded-t-lg  hover:bg-gray-50 flex items-center space-x-1 `}
                 >
-                    <MdWatchLater className="hidden group-hover:animate-bounce md:block" /><span className={` ${activeTab === 5 ? 'text-transparent bg-clip-text bg-[linear-gradient(95.74deg,_#0076CE_-7.82%,_#9400D3_143.96%)] font-bold ' : ''}   `} > <span className="hidden md:inline" >Work</span>  History</span>
-                </li>
+                    <MdWatchLater className="hidden group-hover:animate-bounce md:block" /><span className={` ${activeTab === 5 ? 'text-transparent bg-clip-text bg-[linear-gradient(95.74deg,_#0076CE_-7.82%,_#9400D3_143.96%)] font-bold ' : ''}   `} > <span className="hidden md:inline" ></span>  Archives</span>
+                </li>}
             </ul>
             <div className="h-full p-4 overflow-x-hidden ">
 

@@ -82,7 +82,7 @@ const RateModifiation = () => {
     }
 
     useEffect(() => {
-        console.log(searchParams.get("service"))
+        console.log(searchParams.get("create"))
         if (searchParams.get("create") !== "true") {
             console.log("getting service")
             axios

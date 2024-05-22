@@ -10,43 +10,27 @@ const RightProfile = ({ data }) => {
             <div className="md:mt-2">
                 <p className="text-lg font-medium md:mb-3">Tags </p>
                 <div className="flex flex-wrap w-full align-top max-h-32 bg-slate-100">
-                        { data?.user?.userTags && data.user.userTags.map((tag) => 
+                    {data?.user?.profileTags && data.user.profileTags.map((tag) =>
 
-                            <span title="Experience 0-1 year " id="badge-dismiss-default" class="cursor-pointer hover:bg-[linear-gradient(95.74deg,_#0076CE_-7.82%,_#9400D3_143.96%)] inline-flex items-center px-2 py-1 me-2 text-sm font-medium  bg-[linear-gradient(95.74deg,_#0076CECE_-7.82%,_#9400D3CB_143.96%)] rounded  text-white m-1">
-                                {tag}
-                            </span>
-                        )}
-                        {!data?.user?.userTags && <Loading/>}
-            </div>
+                        <span title="Experience 0-1 year " id="badge-dismiss-default" class="cursor-pointer hover:bg-[linear-gradient(95.74deg,_#0076CE_-7.82%,_#9400D3_143.96%)] inline-flex items-center px-2 py-1 me-2 text-sm font-medium  bg-[linear-gradient(95.74deg,_#0076CECE_-7.82%,_#9400D3CB_143.96%)] rounded  text-white m-1">
+                            {tag}
+                        </span>
+                    )}
+                    {data?.user?.profileTags.length==0 && <span className="font-medium text-gray-600">No Tags Added</span>}
+                    {!data?.user?.profileTags && <Loading />}
+                </div>
             </div>
             <div className="md:mt-2 ">
-                <p className="text-lg font-medium md:mb-3">Services </p>
+            <p className="text-lg font-medium md:mb-3">Skills    </p>
+                <div className="flex flex-wrap w-full align-top max-h-32 bg-slate-100">
+                    {data?.user?.skills && data.user.skills.map((skill) =>
 
-                <div>
-                    <span id="badge-dismiss-default" class="inline-flex items-center px-2 py-1 me-2 text-sm font-medium  bg-[linear-gradient(95.74deg,_#0076CECE_-7.82%,_#9400D3CB_143.96%)] rounded  text-white m-1">
-                        newBie
-                    </span>
-                    <span id="badge-dismiss-default" class="inline-flex items-center px-2 py-1 me-2 text-sm font-medium  bg-[linear-gradient(95.74deg,_#0076CECE_-7.82%,_#9400D3CB_143.96%)] rounded  text-white m-1">
-                        Experinced
-                    </span>
-                    <span id="badge-dismiss-default" class="inline-flex items-center px-2 py-1 me-2 text-sm font-medium  bg-[linear-gradient(95.74deg,_#0076CECE_-7.82%,_#9400D3CB_143.96%)] rounded  text-white m-1">
-                        Meets Deadline
-                    </span>
-                    <span id="badge-dismiss-default" class="inline-flex items-center px-2 py-1 me-2 text-sm font-medium  bg-[linear-gradient(95.74deg,_#0076CECE_-7.82%,_#9400D3CB_143.96%)] rounded  text-white m-1">
-                        Hindi
-                    </span>
-                    <span id="badge-dismiss-default" class="inline-flex items-center px-2 py-1 me-2 text-sm font-medium  bg-[linear-gradient(95.74deg,_#0076CECE_-7.82%,_#9400D3CB_143.96%)] rounded  text-white m-1">
-                        English
-                    </span>
-                    <span id="badge-dismiss-default" class="inline-flex items-center px-2 py-1 me-2 text-sm font-medium  bg-[linear-gradient(95.74deg,_#0076CECE_-7.82%,_#9400D3CB_143.96%)] rounded  text-white m-1">
-                        Responsive Designs
-                    </span>
-                    <span id="badge-dismiss-default" class="inline-flex items-center px-2 py-1 me-2 text-sm font-medium  bg-[linear-gradient(95.74deg,_#0076CECE_-7.82%,_#9400D3CB_143.96%)] rounded  text-white m-1">
-                        Attracttive Designs
-                    </span>
-                    <span id="badge-dismiss-default" class="inline-flex items-center px-2 py-1 me-2 text-sm font-medium  bg-[linear-gradient(95.74deg,_#0076CECE_-7.82%,_#9400D3CB_143.96%)] rounded  text-white m-1">
-                        UI/UX
-                    </span>
+                        <span title="Experience 0-1 year " id="badge-dismiss-default" class="cursor-pointer hover:bg-[linear-gradient(95.74deg,_#0076CE_-7.82%,_#9400D3_143.96%)] inline-flex items-center px-2 py-1 me-2 text-sm font-medium  bg-[linear-gradient(95.74deg,_#0076CECE_-7.82%,_#9400D3CB_143.96%)] rounded  text-white m-1">
+                            {skill}
+                        </span>
+                    )}
+                    {data?.user?.skills.length==0 && <span className="font-medium text-gray-600">No Skills Added</span>}
+                    {!data?.user?.skills && <Loading />}
                 </div>
 
             </div>

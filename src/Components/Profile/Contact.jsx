@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios"
 import { useParams } from "react-router-dom";
 import Loading from "../Loading";
@@ -6,10 +6,10 @@ const Contact = () => {
 
     const [loading, setLoading] = useState(false)
     const [data, setData] = useState(false)
-    
+
 
     const params = useParams();
-    const userId = params.userId;   
+    const userId = params.userId;
 
 
     useEffect(() => {
@@ -25,19 +25,19 @@ const Contact = () => {
         }
     }
 
-   if(!data){
-    return (
-    <div className="flex items-center justify-center h-1/2">
-        <Loading/>
-    </div>
-    )
-   }
-   console.log(data)
-    
+    if (!data) {
+        return (
+            <div className="flex items-center justify-center h-1/2">
+                <Loading />
+            </div>
+        )
+    }
+    console.log(data)
+
     return (
         <div>
             <table>
-               
+
                 <tbody>
                     <tr>
                         <td className="w-32 font-medium ">Phone:</td>
@@ -49,47 +49,47 @@ const Contact = () => {
                     </tr>
                     <tr>
                         <td className="font-medium ">Email:</td>
-                        <td  className="font-medium max-w-46 text-slate-700">{data.email}</td>
+                        <td className="font-medium max-w-46 text-slate-700">{data.email}</td>
                     </tr>
                     <tr>
                         <td className="font-medium ">Site:</td>
-                        <td className="font-medium max-w-46 text-slate-700">{data.personalSite ? data.personalSite : "N/A" }</td>
+                        <td className="font-medium max-w-46 text-slate-700">{data.personalSite ? data.personalSite : "N/A"}</td>
                     </tr>
-                    
+
                 </tbody>
             </table>
 
             <table>
-               <thead>
-                <th className="text-left" >Social Media </th>
-               </thead>
+                <thead>
+                    <th className="text-left" >Social Media </th>
+                </thead>
                 <tbody>
-                    {console.log(data.socials)}    
-                    { data.socials && data.socials.map((social,index)=>
-                    
-                    <tr>
-                        <td className="w-32 font-medium ">{social[0]}:</td>
-                        <td className="font-medium max-w-32 text-slate-700">{social[1]}</td>
-                    </tr>
-                        
+                    {data.socials && data.socials.map((social, index) =>
+
+                        <tr>
+                            <td className="w-32 font-medium ">{social.title}:</td>
+                            <td className="font-medium max-w-32 text-slate-700"><a href={social.value} target="_blank">{social.value}</a>
+                            </td>
+                        </tr>
+
                     )
-                    
-                }
-                {!data?.socials?.length && <td className="w-32 font-medium ">N/A</td>}
+
+                    }
+                    {!data?.socials?.length && <td className="w-32 font-medium ">N/A</td>}
                 </tbody>
             </table>
             <table>
-               <thead>
-                <th colSpan={2} className="text-left w-36">Payment Address </th>
-               </thead>
+                <thead>
+                    <th colSpan={2} className="text-left w-36">Payment Address </th>
+                </thead>
                 <tbody>
                     {
-                        data.payment && data.payment.map((payment,index)=>{
+                        data.payment && data.payment.map((payment, index) => 
                             <tr>
-                                <td className="w-32 font-medium ">{payment[0]}:</td>
-                                <td className="font-medium max-w-32 text-slate-700">{payment[1]}</td>
+                                <td className="w-32 font-medium ">{payment.title}:</td>
+                                <td className="font-medium max-w-32 text-slate-700">{payment.value}</td>
                             </tr>
-                        })
+                        )
                     }
                     {!data?.payment?.length && <td className="w-32 font-medium ">N/A</td>}
                 </tbody>
@@ -99,4 +99,4 @@ const Contact = () => {
     )
 }
 
-export default  Contact;
+export default React.memo(Contact);

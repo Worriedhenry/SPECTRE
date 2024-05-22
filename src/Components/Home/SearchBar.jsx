@@ -15,26 +15,45 @@ export default function SearchComponent() {
             .then((response) => setCAData(response.data))
             .catch((error) => console.error(error));
     }, []);
-    const handleInputChange = (value) => {
-        setNoSuggestion(true)
-        setSearchTerm(value);
-        const suggestedCAs = caData.filter((ca) =>
-            ca.toLowerCase().includes(value.toLowerCase())
-        );
 
-        setSuggestions(suggestedCAs);
+
+
+    useEffect(() => {
+        // I want to implemet debounce here
+        const getData = setTimeout(() => {
+            axios
+            .get(`http://localhost:3001/searchname/${searchTerm}`)
+            .then((response) => {
+              console.log(response.data);
+              setSuggestions(response.data);
+            });
+          }, 700)
+
+          return () => clearTimeout(getData)
+    }, [searchTerm]);
+
+
+    const handleInputChange = (value) => {
+        // setNoSuggestion(true)
+        setSearchTerm(value);
+        // const suggestedCAs = caData.filter((ca) =>
+        //     ca.toLowerCase().includes(value.toLowerCase())
+        // );
+
+        // setSuggestions(suggestedCAs);
     }
     const handleSearch=async ()=>{
         if (searchTerm.length>0){
-            navigate("service/"+searchTerm)
+            navigate("search/?query="+searchTerm)
         }
         
 
     }
     const handleSuggestionClick = (suggestion) => {
-        setNoSuggestion(false)
-        setSearchTerm(suggestion); // Update the input with the selected suggestion
-        setSuggestions([]); // Clear the suggestions
+        // setNoSuggestion(false)
+        setSearchTerm(suggestion.serviceName); // Update the input with the selected suggestion
+        // navigate("/service/"+suggestion._id)/
+        // setSuggestions([]); // Clear the suggestions
       }
     return (
         <div className="md:px-20 px-8 md:my-36 flex flex-col md:flex-row  md:py-10 bg-[#FAFBFC] ">
@@ -43,7 +62,7 @@ export default function SearchComponent() {
                     Find <span className="text-transparent bg-clip-text bg-[linear-gradient(90.05deg,_#0076CE_43.35%,_#9400D3_65.11%)]  md:text-6xl ">Services</span> available online
                 </p>
                 <p className=" text-[#616161] mt-5 text-xs md:text-base ">
-                    <span className="text-sm font-bold  md:text-xl">Connect</span> with us where your services are listed and visible to a myriad of businesses seeking CA’s for compliance support
+                    <span className="text-sm font-bold  md:text-xl">Connect</span> with us where your services are listed and visible to a myriad of businesses seeking services
                 </p>
                 <div className="mt-12">
                     <form onSubmit={handleSearch}>
@@ -59,7 +78,7 @@ export default function SearchComponent() {
                                 </div>}
                             {suggestions.map((suggestion, index) => (
                                 <div key={index} onClick={() => handleSuggestionClick(suggestion)} className="px-6 py-2 border border-gray-300 cursor-pointer hover:bg-gray-100">
-                                    {suggestion}
+                                    {suggestion.serviceName}
                                 </div>
                             ))}
                         </div>}

@@ -2,7 +2,7 @@ export default function Footer() {
 
     return(
         <div className=" md:px-20 px-8 py-10 overflow-hidden md:mt-auto    bg-[linear-gradient(95.74deg,_#0076CE_-7.82%,_#9400D3_143.96%)] divide-y  ">
-            <ul className="flex md:space-x-14 space-x-3 mb-8">
+            <ul className="flex md:space-x-14 cursor-not-allowed space-x-3 mb-8">
                 <li>
                     <ul className="space-y-5">
                         <li><img className=" max-w-full max-h-full w-32 " src="/images/SPECTRE_LOGO_WHITE.webp"  /></li>
@@ -22,8 +22,8 @@ export default function Footer() {
                         <li className="font-bold md:text-base text-white text-[0.50rem]">SOLUTIONS</li>
                         <li className="text-white md:text-base text-[0.5rem]">Search</li>
                         <li className="text-white md:text-base text-[0.5rem]">Connect</li>
-                        <li className="text-white md:text-base text-[0.5rem]">Research</li>
-                        <li className="text-white md:text-base text-[0.5rem]">Academy</li>
+                        {/* <li className="text-white md:text-base text-[0.5rem]">Research</li>
+                        <li className="text-white md:text-base text-[0.5rem]">Academy</li> */}
                     </ul>
                 </li>
                 <li>
@@ -57,7 +57,7 @@ export default function Footer() {
                     <li><img src="/images/facebook.webp" /></li>
                     <li><img src="/images/Insta.webp" /></li>
                     <li><img src="/images/linkedin_logo.webp" /></li>
-                    <li><img src="/images/Whatsapp.webp" /></li>
+                    <li><img src="/images/Whatsapp.png" /></li>
                 </ul>
             </div>
         </div>

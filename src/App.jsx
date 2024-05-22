@@ -11,7 +11,7 @@ import RegisterPage from './Pages/Register';
 import ContactPage from './Pages/ContactPage';
 import ModifyServicePage from './Pages/ModifyService';
 import ModifyProfilePage from './Pages/ModifyProfile';
-import Tasks from './Pages/tasks';
+import Tasks from './Pages/Tasks';
 import FullTasks from './Pages/FullTask';
 import {useSelector,useDispatch} from 'react-redux'
 import axios from 'axios'
@@ -66,7 +66,7 @@ export default function App() {
         <Route path='modify/profile' element={<RestrictedRoutes Component={ModifyProfilePage} condition={userToken} otherwise="/login" next="/modify/profile" />} />
         <Route path='modify/service' element={<RestrictedRoutes Component={ModifyServicePage } condition={userToken} otherwise="/login" next="/service/edit/:serviceId" />} />
         <Route path='profile/tasks' element={<RestrictedRoutes Component={Tasks } condition={userToken} otherwise="/login" next={"/profile/tasks"} />} /> 
-        <Route path='profile/viewtask' element={<RestrictedRoutes Component={FullTasks} condition={userToken} otherwise="/login" next={"/profile/viewtask"} />} /> 
+        <Route path='profile/viewtask/:taskId' element={<RestrictedRoutes Component={FullTasks} condition={userToken} otherwise="/login" next={"/profile/viewtask"} />} /> 
         <Route path='*' element={<Home />} />
       </Routes>
     </BrowserRouter>

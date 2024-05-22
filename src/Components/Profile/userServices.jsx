@@ -1,14 +1,16 @@
 import React, { useEffect, useState, useRef } from "react";
 import ServiceSummary from "../Search/SearchCard";
 import axios from "axios";
+import Loading from "../Loading";
 
-export default function userServices({ userId, profilePic, location, username }) {
+export default React.memo(function userServices({ userId, profilePic, location, username }) {
 
     const lastElementRef = useRef(null)
 
-    const [services, setServices] = useState([])
+    const [services, setServices] = useState(null)
     const [stopObserver, setStopObserver] = useState(false)
     useEffect(() => {
+        console.log("running")
         axios
             .get("http://localhost:3001/user/getservices/" + userId + "/0/3")
             .then(res => {
@@ -23,7 +25,7 @@ export default function userServices({ userId, profilePic, location, username })
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
-                    console.log('Last element is intersecting with the viewport!');
+
                     fetchMoreData(services.length);
                 }
             },
@@ -55,13 +57,14 @@ export default function userServices({ userId, profilePic, location, username })
         }
         )
     }
-
-    console.log(lastElementRef.current)
+    
     return (
         <div className="md:max-h-[600px] hide-scroll-bar overflow-y-auto">
-            {services.length > 0 && services.map((service, index) => <ServiceSummary ref={index == services.length - 1 ? lastElementRef : null} data={service} location={location} profilePic={profilePic}
+            {!services && <Loading />}
+            {services && services.length === 0 && <p className="text-center text-gray-500 font-medium italic ">No Services</p>}
+            {services && services.length > 0 && services.map((service, index) => <ServiceSummary ref={index == services.length - 1 ? lastElementRef : null} data={service} location={location} profilePic={profilePic}
                 key={index} userId={userId} username={username} />)}
 
         </div>
     );
-}   
+}   )

@@ -17,8 +17,9 @@ const ProfilePage = () => {
     const dispatch=useDispatch()
 
     useEffect(() => {
+        
         getProfileData()
-    }, [])
+    }, [userId])
     
     async function getProfileData(){
         setLoading(true)

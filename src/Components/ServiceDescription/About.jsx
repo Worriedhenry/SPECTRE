@@ -74,7 +74,7 @@ export default function About({ data }) {
                     <ul className="text-sm list-disc md:px-10 md:text-base">
                         <li className="text-slate-800"><a href="https://www.w3schools.com" target="_blank">Instagram</a></li>
                         {data.socials?.map((e) =>
-                            <li className="text-slate-800"><a href="https://www.w3schools.com" target="_blank">{e}</a></li>
+                            <li className="text-slate-800"><a href="https://www.w3schools.com" target="_blank">{e.title}</a></li>
                         )}
                     </ul>
                 </div>

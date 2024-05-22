@@ -12,6 +12,7 @@ import ServiceSummary from "../Search/SearchCard";
 import ContactModify from "./Modifiable/ContactModify";
 import BasicModification from "./Modifiable/BasicModification";
 import Loading from "../Loading";
+import ProfilePicModifications from "./Modifiable/ProfilePicModifications";
 export default function ModedUserDetails() {
 
     const [activeTab, setActiveTab] = useState(6);
@@ -48,7 +49,7 @@ export default function ModedUserDetails() {
                     onClick={() => handleTabClick(4)}
                     className={`cursor-pointer parent group  font-medium py-2 text-left md:px-4 ${activeTab === 4 ? 'border-b-2 border-blue-500 text-black ' : 'text-slate-700'}   justify-start rounded-t-lg hover:text-gray-600 hover:bg-gray-50 flex  items-center space-x-3 `}
                 >
-                    <MdDesignServices className="hidden md:block group-hover:animate-bounce"  /><span className={`font-medium  text-sm md:text-base ${activeTab === 4 ? 'text-transparent bg-clip-text bg-[linear-gradient(95.74deg,_#0076CE_-7.82%,_#9400D3_143.96%)] font-bold ' : 'text-slate-700'}   `} > Services</span>
+                    <MdDesignServices className="hidden md:block group-hover:animate-bounce"  /><span className={`font-medium  text-sm md:text-base ${activeTab === 4 ? 'text-transparent bg-clip-text bg-[linear-gradient(95.74deg,_#0076CE_-7.82%,_#9400D3_143.96%)] font-bold ' : 'text-slate-700'}   `} > Profile Pic</span>
                 </li>
                 <li
                     onClick={() => handleTabClick(5)}
@@ -63,10 +64,7 @@ export default function ModedUserDetails() {
                 {activeTab === 2 && <ContactModify />}
                 {activeTab === 1 && <AboutModifiation />}
                 {activeTab === 3 && <p>Content for Tab 3</p>}
-                {activeTab === 4 && <div>
-                    <ServiceSummary />
-                    <ServiceSummary />
-                    </div>}
+                {activeTab === 4 && <ProfilePicModifications/> }
                 {activeTab === 5 && <TagsModify />}
                 {activeTab === 6 && <BasicModification />}
             </div>

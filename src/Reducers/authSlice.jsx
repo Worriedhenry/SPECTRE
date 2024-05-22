@@ -28,9 +28,9 @@ const authSlice = createSlice({
     setUserToken: (state, action) => {
       // state.userToken = action.payload
       state.userToken = action.payload.token
-      state.userInfo.profilePic = action.payload.profilePic
-      state.userInfo.email = action.payload.email
-      state.userInfo.username = action.payload.username
+      state.profilePic = action.payload.profilePic
+      state.email = action.payload.email
+      state.username = action.payload.username
       // console.log(action.payload)
     },
     logout: (state) => {
@@ -46,6 +46,9 @@ const authSlice = createSlice({
     showError: (state,action) => {
       state.error=action.payload
       setTimeout(()=>{state.error=null},3000)
+    },
+    updateProfilePic: (state,action) => {
+      state.profilePic=action.payload
     }
   },
   /**
@@ -116,5 +119,5 @@ const authSlice = createSlice({
       })
      }
 })
-export const { setUserToken, logout, stopLoading , showError } = authSlice.actions;
+export const { setUserToken, logout, stopLoading , showError, updateProfilePic } = authSlice.actions;
 export default authSlice.reducer;

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 const ServiceSummary = forwardRef(({data,location,profilePic,userId,username},ref) => {
 
-
+    
 
     const navigate=useNavigate()
 
@@ -18,7 +18,7 @@ const ServiceSummary = forwardRef(({data,location,profilePic,userId,username},re
                     <span className="text-sm  text-slate-500 md:text-base">@{username} </span>
                 </p>
                 <p className="text-xs md:text-base">
-                    {data.rating} 
+                    {data.rating || 0} 
                 </p>
                 <p className="text-xs md:text-base">
                     {location[2]},{location[3]}

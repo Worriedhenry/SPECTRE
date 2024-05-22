@@ -23,17 +23,16 @@ export default function ShowService() {
             .catch(err => console.error(err));
     }, [serviceId])
 
-    // console.log(data?.serviceProvider)
 
     return (
         <div className="">
             <Header />
             {!data ? <div><Loading/></div> :
                 <>
-                    <SearchResult data={data} />
+                    <SearchResult data={data} serviceId={serviceId} />
                     <ServiceReview data={data.serviceReviews} serviceId={data._id} />
                     {data.serviceProvider?.services?.length>1 && <Recommended topic={topic} serviceId={data.id} user={data?.serviceProvider} />}
-                    <Recommended topic="Recommended for you"  user={data?.serviceProvider} />
+                    
                     <Footer />
                 </>
             }
