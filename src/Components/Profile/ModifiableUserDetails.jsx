@@ -1,17 +1,12 @@
 import React, { useState } from "react";
-import { FaLocationDot, FaMessage } from "react-icons/fa6";
 import { IoPerson } from "react-icons/io5";
 import { FaPhoneAlt } from "react-icons/fa";
-import WorkHistory from "./WorkHistory";
 import { FaPen } from "react-icons/fa";
 import { MdDesignServices } from "react-icons/md";
 import TagsModify from "./Modifiable/TagsModify";
 import AboutModifiation from "./Modifiable/AboutModification";
-import DetailedAbout from "./DetailedAbout";
-import ServiceSummary from "../Search/SearchCard";
 import ContactModify from "./Modifiable/ContactModify";
 import BasicModification from "./Modifiable/BasicModification";
-import Loading from "../Loading";
 import ProfilePicModifications from "./Modifiable/ProfilePicModifications";
 export default function ModedUserDetails() {
 

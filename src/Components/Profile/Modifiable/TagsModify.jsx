@@ -34,7 +34,7 @@ const TagsModify = () => {
 
     const updateProfileTags = async () => {
         try {
-            const result = await axios.put("http://localhost:3001/user/updateprofiletags/" + userId, { profileTags: Array.from(tags) })
+            const result = await axios.put(import .meta.env.VITE_BACKEND+"/user/updateprofiletags/" + userId, { profileTags: Array.from(tags) })
             if (result.status === 204) {
                 alert("Profile tags updated successfully");
             }
@@ -45,7 +45,7 @@ const TagsModify = () => {
 
 
     useEffect(() => {
-        axios.get("http://localhost:3001/user/getprofiletags/"+userId).then((res) => {
+        axios.get(import .meta.env.VITE_BACKEND+"/user/getprofiletags/"+userId).then((res) => {
 
             if (res.status === 200) {
                 setTags(new Set(res.data.profileTags))

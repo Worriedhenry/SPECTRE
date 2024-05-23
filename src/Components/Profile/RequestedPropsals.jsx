@@ -17,7 +17,7 @@ const RequestedProposal = ({ component }) => {
 
     async function getProposalDetails() {
         // setLoading(true)
-        const res = await axios.get("http://localhost:3001/proposal/getproposal/" + userId + "/1")
+        const res = await axios.get(import .meta.env.VITE_BACKEND+"/proposal/getproposal/" + userId + "/1")
         // setLoading(false)
         if (res.status === 200) {
             console.log(res.data,userId)

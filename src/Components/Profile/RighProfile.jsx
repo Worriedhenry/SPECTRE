@@ -1,8 +1,7 @@
 import React from "react";
 import Loading from "../Loading";
 const RightProfile = ({ data }) => {
-    console.log("RightProfile", data)
-    return (
+        return (
         <div className="hidden w-1/4 p-2 bg-white divide-y-2 rounded-lg md:block">
             <div className="flex justify-center w-full max-h-full">
                 <img alt="Profile Pic" className="max-w-full rounded-full m md:w-52 md:h-52" src={data?.user?.profilePic ? data?.user?.profilePic : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"} />

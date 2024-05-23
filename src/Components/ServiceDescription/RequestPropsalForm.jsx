@@ -55,7 +55,7 @@ const RequestedPropsalPage = ({ setActiveTabs, serviceName, serviceId, servicePr
 
     const handleFormSubmit =async (e) => {
         e.preventDefault()
-        const res = await axios.post("http://localhost:3001/proposal/create", {
+        const res = await axios.post(import .meta.env.VITE_BACKEND+"/proposal/create", {
             service: serviceId,
             serviceProvider:serviceProviderId,
             client:userId,

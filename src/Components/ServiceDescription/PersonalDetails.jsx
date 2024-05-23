@@ -7,24 +7,7 @@ import { useSelector } from "react-redux";
 export default function PersonalDetails({data,setActiveTab}) {
     const navigate = useNavigate();
     const {userId}=useSelector((state)=>state.auth)
-    // const data={
-    //     serviceName:"Web Development",
-    //     serviceBrief:"Web development is the building and maintenance of websites; it's the job of a web developer to create, design, and maintain the look and functionality of a website.  ",
-    //     rating:4,
-    //     reviewCount:10,
-    //     complexity:[{
-    //         taskComplexity:"Easy-Medium",
-    //         taskRate:"4-9" ,
-    //         deliveryTime:"3-6 days"
-    //     }
-    // ],
-    // workSamples:[{
-    //     link:"google",
-    //     workBrief:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, laboriosam beatae exercitationem atque necessitatibus, voluptatem ipsum minus ratione nemo perspiciatis hic nam nesciunt nisi iusto commodi voluptate accusantium! Itaque, id."
-    // }]
-    // }
 
-    // create an useRef hook
     const brief = useRef(null)
     const readMore=useRef(null)
 

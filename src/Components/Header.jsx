@@ -32,8 +32,8 @@ export default function () {
                 </ul>
             </div>
             <div className={`flex space-x-3 ${userToken ? "hidden" : "block"}`}>
-                <button type="button" onClick={() => navigate("/login")} class="text-[#0076CE] bg-white hover:bg-white focus:ring-4 focus:ring-blue-300 font-medium rounded-lg px-2 py-1 md:text-base text-xs md:px-5 md:py-2.5 md:mr-2 mb-2 border-[#0076CE] border-2">Login</button>
-                <button type="button" onClick={() => navigate("/register")} class="text-white   hover:bg-[linear-gradient(95.74deg,_#9400D3_-7.82%,_#0076CE_143.96%)] focus:outline-none bg-[linear-gradient(95.74deg,_#0076CE_-7.82%,_#9400D3_143.96%)]  font-medium rounded-lg text-xs md:px-5 md:py-2.5 px-2 py-1 md:mr-2 mb-2 md:text-base ">Register</button>
+                <button type="button" onClick={() => navigate("/login")} class="text-[#0076CE] bg-white hover:bg-white focus:ring-4 focus:ring-blue-300 font-medium md:rounded-lg rounded-md px-1 py-[0.1rem] md:text-base text-[0.6rem] md:px-5 md:py-2.5 md:mr-2  border-[#0076CE] border-2">Login</button>
+                <button type="button" onClick={() => navigate("/register")} class="text-white   hover:bg-[linear-gradient(95.74deg,_#9400D3_-7.82%,_#0076CE_143.96%)] focus:outline-none bg-[linear-gradient(95.74deg,_#0076CE_-7.82%,_#9400D3_143.96%)]  font-medium md:rounded-lg rounded-md text-[0.6rem] md:px-5 md:py-2.5 px-2 py-1 md:mr-2  md:text-base ">Register</button>
             </div>
             <div className={`flex space-x-3 ${userToken ? "block" : "hidden"}`} >
                 <button title="Chats -will be available soon"  type="button" className=" cursor-not-allowed h-fit md:h-auto relative inline-flex items-center md:p-3 p-2  hover:bg-[linear-gradient(95.74deg,_#9400D3_-7.82%,_#0076CE_143.96%)] text-sm font-medium text-center text-white rounded-lg bg-[linear-gradient(95.74deg,_#0076CE_-7.82%,_#9400D3_143.96%)] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 ">

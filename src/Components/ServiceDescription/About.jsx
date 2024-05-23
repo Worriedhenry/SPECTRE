@@ -6,19 +6,7 @@ export default function About({ data }) {
     const benefits = ["Website Development", "UI/UX", "Maintanence"]
 
     const navigate = useNavigate()
-
-    // const data={
-    //     name:"Micheal Jackson",
-    //     country:"India",
-    //     joined:"2022",
-    //     avgResponse:"30min",
-    //     about:"I will do business evaluation and corporate services Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus eaque non illo iste repellendus est. Doloremque corporis velit vero illo, cum, iusto esse non quo laboriosam quas, dolore explicabo id",
-    //     services:["Website Development","UI/UX","Maintanence"],
-    //     benefits:["Website Development","UI/UX","Maintanence"],
-    // }
-
-    // console.log(data.id,data)
-    
+   
     return (
         <div className="space-y-5 py-4 w-1/3 px-6 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] rounded-xl  mb-6 bg-white hidden md:block">
             <div className="md:w-[80%] t text-center flex justify-center">

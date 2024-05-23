@@ -10,7 +10,7 @@ const WorkHistory = () => {
     const {userId}=useSelector(state=>state.auth)
 
     useEffect(() => {
-        axios.get("http://localhost:3001/proposal/archives/"+userId).then(
+        axios.get(import .meta.env.VITE_BACKEND+"/proposal/archives/"+userId).then(
             res => {
                 setSData(res.data)
             }

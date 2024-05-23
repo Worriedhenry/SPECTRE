@@ -14,7 +14,7 @@ export default function ShowService() {
 
     useEffect(() => {
         axios
-            .get("http://localhost:3001/services/getservice/" + serviceId)
+            .get(import .meta.env.VITE_BACKEND+"/services/getservice/" + serviceId)
             .then(res => {
                 if (res.status == 200) {
                     setData(res.data)

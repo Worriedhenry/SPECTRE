@@ -10,7 +10,7 @@ export default function Recommended({ user, topic,serviceId }) {
     
 
     const fetchMoreData = (currentTotal) => {
-        axios.get(`http://localhost:3001/user/getservices/${user._id}/${currentTotal}/2`).then(res => {
+        axios.get(import .meta.env.VITE_BACKEND+`/user/getservices/${user._id}/${currentTotal}/2`).then(res => {
           if (res.status === 200) {
             if (res.data.length === 0) {
               lastElementRef.current = null;
@@ -26,7 +26,7 @@ export default function Recommended({ user, topic,serviceId }) {
         const observer = new IntersectionObserver(
           ([entry]) => {
             if (entry.isIntersecting) {
-              console.log('Last element is intersecting with the viewport!');
+             
               fetchMoreData(services.length);
             }
           },
@@ -49,7 +49,7 @@ export default function Recommended({ user, topic,serviceId }) {
 
     useEffect(() => {
         axios
-            .get("http://localhost:3001/user/getservices/" + user._id+"/0/4")
+            .get(import .meta.env.VITE_BACKEND+"/user/getservices/" + user._id+"/0/4")
             .then(res => {
                 if (res.status == 200) {
                     setServices(res.data)
@@ -74,11 +74,6 @@ export default function Recommended({ user, topic,serviceId }) {
                 {services.length > 0 && services.map((service, index) => 
                     <ServiceSummary data={service} key={index} user={user} ref={index === services.length - 1 ? lastElementRef : null} />
                 )}
-
-
-
-
-
 
             </div>
         </div>

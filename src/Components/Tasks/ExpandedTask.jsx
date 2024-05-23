@@ -23,7 +23,7 @@ const ExpandedTask = () => {
     }
 
     useEffect(() => {
-        axios.get("http://localhost:3001/proposal/getproposaldetails/" + taskId).then(
+        axios.get(import .meta.env.VITE_BACKEND+"/proposal/getproposaldetails/" + taskId).then(
             res => {
                 setData(res.data)
                 if (data && data?.serviceProvider._id != userId && data?.client._id != userId) {
@@ -56,11 +56,11 @@ const ExpandedTask = () => {
             proposalStatus: -1,
             log: date.toString() + " - Proposal Rejected"
         }
-        const res = await axios.put("http://localhost:3001/proposal/updateproposal/" + data._id, payload)
+        const res = await axios.put(import .meta.env.VITE_BACKEND+"/proposal/updateproposal/" + data._id, payload)
         if (res.status == 204) {
             data.proposalStatus = -1;
             data.logs.push(payload.log)
-            setData(data)
+            setData(null)
             alert("Proposal Rejected")
         }
     }
@@ -70,11 +70,9 @@ const ExpandedTask = () => {
             proposalStatus: 2,
             log: date.toString() + " - Proposal Accepted"
         }
-        const res = await axios.put("http://localhost:3001/proposal/updateproposal/" + data._id, payload)
+        const res = await axios.put(import .meta.env.VITE_BACKEND+"/proposal/updateproposal/" + data._id, payload)
         if (res.status == 204) {
-            data.proposalStatus = 2;
-            data.logs.push(payload.log)
-            setData(data)
+                        setData(null)
             alert("Proposal Accepted")
         }
     }
@@ -89,7 +87,7 @@ const ExpandedTask = () => {
             proposalStatus: -2,
             log: date.toString() + " - Proposal Abandoned"
         }
-        const res = await axios.put("http://localhost:3001/proposal/updateproposal/" + data._id, payload)
+        const res = await axios.put(import .meta.env.VITE_BACKEND+"/proposal/updateproposal/" + data._id, payload)
         if (res.status == 204) {
             data.proposalStatus = -2
             data.logs.push(payload.log)
@@ -111,7 +109,7 @@ const ExpandedTask = () => {
             userId,
             serviceId:data.service._id
         }
-        const res = await axios.put("http://localhost:3001/proposal/completeproposal/" + data._id, payload)
+        const res = await axios.put(import .meta.env.VITE_BACKEND+"/proposal/completeproposal/" + data._id, payload)
         if (res.status === 204) {
             setData(null)
             alert("Proposal closed successfully")
@@ -130,7 +128,7 @@ const ExpandedTask = () => {
             proposalStatus: 3,
             log: date.toString() + " - Marked completed by " + data?.serviceProvider.username
         }
-        const res = await axios.put("http://localhost:3001/proposal/updateproposal/" + data._id, payload)
+        const res = await axios.put(import .meta.env.VITE_BACKEND+"/proposal/updateproposal/" + data._id, payload)
         if (res.status === 204) {
             setData(null)
             alert("Marked Complete , proposal will be closed when client confirms the  submission")
@@ -145,7 +143,7 @@ const ExpandedTask = () => {
         const payload = {
             userId,
         }
-        const res = await axios.put("http://localhost:3001/proposal/archiveproposal/" + data._id, payload)
+        const res = await axios.put(import .meta.env.VITE_BACKEND+"/proposal/archiveproposal/" + data._id, payload)
         if (res.status === 204) {
             alert("Proposal archived successfully")
             setIsArchived(true)
@@ -158,7 +156,7 @@ const ExpandedTask = () => {
             return
         }
 
-        const res = await axios.put("http://localhost:3001/proposal/unarchiveproposal/" + data._id, { userId })
+        const res = await axios.put(import .meta.env.VITE_BACKEND+"/proposal/unarchiveproposal/" + data._id, { userId })
         if (res.status == 204) {
             alert("Successfully Unarchived")
             setIsArchived(false)
@@ -172,9 +170,7 @@ const ExpandedTask = () => {
             return
         }
         setOpenReview(true)
-       
-
-    }
+      }
 
     if (data === null) {
         return (

@@ -22,7 +22,7 @@ const SearchPage = () => {
             return 
         }
         console.log(searchParams.get("query"))
-        axios.get("http://localhost:3001/search/"+searchTerm+"/1").then(
+        axios.get(import .meta.env.VITE_BACKEND+"/search/"+searchTerm+"/1").then(
             (res) => {
                 setServices(res.data)
                 console.log(res.data)
@@ -57,7 +57,7 @@ const SearchPage = () => {
 
 
     const fetchMoreData = async (currentTotal) => {
-        const res= await axios.get("http://localhost:3001/search/"+searchTerm+"/"+parseInt(services?.length+1)/5)
+        const res= await axios.get(import .meta.env.VITE_BACKEND+"/search/"+searchTerm+"/"+parseInt(services?.length+1)/5)
         if(res.data.length!==5){
             setStopObserver(true)
             lastElementRef.current = null
@@ -108,7 +108,7 @@ const SearchPage = () => {
                             Showing {services?.length} results
                         </p>
                     </div>
-                    <div className="h-[70vh] overflow-y-scroll hide-scroll-bar snap-y snap-mandatory">
+                    <div className="h-[70vh] overflow-y-scroll space-y-4 hide-scroll-bar snap-y snap-mandatory">
                         {services && services.map((service,index) =><ServiceSummary ref={index == services.length - 1 ? lastElementRef : null} data={service} location={service?.serviceProvider[0]?.location[0]} profilePic={service?.serviceProvider[0]?.profilePic}
                 key={index} userId={service?.serviceProvider[0]?.userId} username={service?.serviceProvider[0]?.username} />)
                 }

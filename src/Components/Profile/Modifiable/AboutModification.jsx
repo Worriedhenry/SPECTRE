@@ -57,13 +57,13 @@ const AboutModifiation = () => {
     }
 
     const updateAbout= async ()=>{
-        const res = await axios.put("http://localhost:3001/user/updateabout/"+userId,{about,education,achievements})
+        const res = await axios.put(import .meta.env.VITE_BACKEND+"/user/updateabout/"+userId,{about,education,achievements})
         if(res.status==204) alert("updated")
     }
 
     useEffect(()=>{
         window.scrollTo(0, 0)
-        axios.get("http://localhost:3001/user/getabout/"+userId).then(res=>{
+        axios.get(import .meta.env.VITE_BACKEND+"/user/getabout/"+userId).then(res=>{
             setAbout(res.data.about)
             setEducation(res.data.education)
             setAchievments(res.data.achievements)

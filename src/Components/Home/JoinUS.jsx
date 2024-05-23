@@ -39,9 +39,7 @@ export default function JoinUs() {
                 <JoinCard  Data={Data1}/>
                 <JoinCard Data={Data2}/>
                 <JoinCard Data={Data3}/>
-                {/* <JoinCard Data={Data4}/>
-                <JoinCard Data={Data5}/>
-                <JoinCard Data={Data6}/> */}
+
             </div>
         </div>
     )

@@ -36,7 +36,7 @@ export default function ProfilePicModifications() {
             const formData = new FormData();
             formData.append("image", selectedImageFile);
             const res = await axios.put(
-                "http://localhost:3001/updateimage/" + userId, formData)
+                import .meta.env.VITE_BACKEND+"/updateimage/" + userId, formData)
 
             if (res.status === 200) {
                 setAlertMessageCode(200)
@@ -60,7 +60,7 @@ export default function ProfilePicModifications() {
         console.log("Hello")
         setUploading(true);
         setAlertMessageCode(303)
-        const res = await axios.put("http://localhost:3001/deleteimagefromurl/", { publicUrl: imageCloudinfo, userId: userId })
+        const res = await axios.put(import .meta.env.VITE_BACKEND+"/deleteimagefromurl/", { publicUrl: imageCloudinfo, userId: userId })
 
         console.log(res.status)
         if (res.status === 200) {

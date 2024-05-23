@@ -39,7 +39,7 @@ const RegisterPage=()=>{
             username,fullname,phone,email,location,password,proilePic:imageCloudinfo?.url,userTags:[...tags]
         }
         setAlertMessage(300)
-        const res=await axios.post("http://localhost:3001/auth/registerviaform",payload)
+        const res=await axios.post(import .meta.env.VITE_BACKEND+"/auth/registerviaform",payload)
         if (res.status===200){
             dispatch(setUserToken(res.data))
             localStorage.setItem("spectre-secret",res.data.token)

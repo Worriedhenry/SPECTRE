@@ -24,14 +24,14 @@ const BasicModification = () => {
     const updateBasic = async (e) => {
         e.preventDefault()
         const location = [streetAddress, city, state, country, zipCode]
-        const res = await axios.put(`http://localhost:3001/user/updatebasic/${userId}`, { fullname, location, skills: Array.from(skills) })
+        const res = await axios.put(import .meta.env.VITE_BACKEND+`/user/updatebasic/${userId}`, { fullname, location, skills: Array.from(skills) })
         if (res.status === 204) {
             alert("updated")
         }
     }
 
     useEffect(() => {
-        axios.get(`http://localhost:3001/user/getbasic/${userId}`).then((res) => {
+        axios.get(import .meta.env.VITE_BACKEND`/user/getbasic/${userId}`).then((res) => {
 
             setFullname(res.data.fullname)
             setUsername(res.data.username)

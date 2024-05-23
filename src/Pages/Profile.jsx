@@ -23,7 +23,7 @@ const ProfilePage = () => {
     
     async function getProfileData(){
         setLoading(true)
-        const res = await axios.get("http://localhost:3001/user/getprofile/" + userId)
+        const res = await axios.get(import .meta.env.VITE_BACKEND+"/user/getprofile/" + userId)
         setLoading(false)
         if (res.status === 200) {
             setData(res.data)

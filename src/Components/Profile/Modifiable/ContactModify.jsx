@@ -19,7 +19,7 @@ const ContactModify = () => {
 
 
     useEffect(() => {
-        axios.get(`http://localhost:3001/user/getcontact/${userId}`).then((res) => {
+        axios.get(import .meta.env.VITE_BACKEND+`/user/getcontact/${userId}`).then((res) => {
             if (res.status === 200) {
                 setPayments(res.data.payment)
                 setSocials(res.data.socials)
@@ -28,7 +28,7 @@ const ContactModify = () => {
     }, [])
 
     const updateContact = async () => {
-        const res = await axios.put(`http://localhost:3001/user/updatecontact/${userId}`, { payments, socials })
+        const res = await axios.put(import .meta.env.VITE_BACKEND+`/user/updatecontact/${userId}`, { payments, socials })
         if (res.status==204){
             alert("Data modified successfully");
             } 

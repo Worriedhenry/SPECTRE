@@ -11,7 +11,7 @@ export default function SearchComponent() {
 
     const navigate=useNavigate()
     useEffect(() => {
-        axios.get('https://mcs-backend-9d1v.onrender.com/searchAll')
+        axios.get(import .meta.env.VITE_BACKEND+'/searchAll')
             .then((response) => setCAData(response.data))
             .catch((error) => console.error(error));
     }, []);
@@ -22,7 +22,7 @@ export default function SearchComponent() {
         // I want to implemet debounce here
         const getData = setTimeout(() => {
             axios
-            .get(`http://localhost:3001/searchname/${searchTerm}`)
+            .get(import .meta.env.VITE_BACKEND+`/searchname/${searchTerm}`)
             .then((response) => {
               console.log(response.data);
               setSuggestions(response.data);
@@ -36,11 +36,7 @@ export default function SearchComponent() {
     const handleInputChange = (value) => {
         // setNoSuggestion(true)
         setSearchTerm(value);
-        // const suggestedCAs = caData.filter((ca) =>
-        //     ca.toLowerCase().includes(value.toLowerCase())
-        // );
-
-        // setSuggestions(suggestedCAs);
+        
     }
     const handleSearch=async ()=>{
         if (searchTerm.length>0){
@@ -51,9 +47,7 @@ export default function SearchComponent() {
     }
     const handleSuggestionClick = (suggestion) => {
         // setNoSuggestion(false)
-        setSearchTerm(suggestion.serviceName); // Update the input with the selected suggestion
-        // navigate("/service/"+suggestion._id)/
-        // setSuggestions([]); // Clear the suggestions
+        setSearchTerm(suggestion.serviceName); // Update the 
       }
     return (
         <div className="md:px-20 px-8 md:my-36 flex flex-col md:flex-row  md:py-10 bg-[#FAFBFC] ">
@@ -68,8 +62,8 @@ export default function SearchComponent() {
                     <form onSubmit={handleSearch}>
                         <div class="max-w-xl ">
                             <div class="flex rounded-md overflow-hidden w-full">
-                                <input type="text" value={searchTerm} onChange={(e)=>handleInputChange(e.target.value)} class="w-full rounded-md px-6 font-bold rounded-r-none border-2 border-[#BFBFBF]" placeholder="Search by name" />
-                                <button onClick={()=>handleSearch} className="hover:bg-[linear-gradient(95.74deg,_#9400D3_-7.82%,_#0076CE_143.96%)] focus:outline-none bg-[linear-gradient(95.74deg,_#0076CE_-7.82%,_#9400D3_143.96%)] text-white md:px-14 px-2 md:text-lg text-xs font-semibold py-4 rounded-r-md">Search</button>
+                                <input type="text" value={searchTerm} onChange={(e)=>handleInputChange(e.target.value)} class="w-full rounded-md px-6 font-bold text-sm md:text-base rounded-r-none border-2 border-[#BFBFBF]" placeholder="Search service" />
+                                <button onClick={()=>handleSearch} className="hover:bg-[linear-gradient(95.74deg,_#9400D3_-7.82%,_#0076CE_143.96%)] focus:outline-none bg-[linear-gradient(95.74deg,_#0076CE_-7.82%,_#9400D3_143.96%)] text-white md:px-14 px-8 md:text-lg text-xs font-semibold py-4 rounded-r-md">Search</button>
                             </div>
                         </div>
                         {searchTerm  &&<div className="relative mt-2">

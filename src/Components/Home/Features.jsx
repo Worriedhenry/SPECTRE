@@ -31,13 +31,13 @@ export default function Features() {
                 <p ref={headRef}  style={{transitionDelay:"100ms"}} className={`mt-4 text-xs md:text-xl  transition-transform duration-[1000ms] transform ${intersectionOfHeading[0] ? 'translate-x-0 opacity-100' : 'translate-x-1/4 opacity-0'}`}>
                     We are more than a platform; We are your success partner. Discover our services to achieve your business and educational goals
                 </p>
-                <div style={{transitionDelay:"200ms",transitionProperty: "opacity",  transitionDuration: "0.5s" }} className={`flex flex-col flex-wrap md:flex-row  transition-transform duration-[1000ms] transform ${intersectionOfHeading[0] ? 'translate-x-0 opacity-100' : 'translate-x-1/4 opacity-0'} `}>
+                <div style={{transitionDelay:"200ms",transitionProperty: "opacity",  transitionDuration: "0.5s" }} className={`flex flex-col flex-wrap  md:flex-row space-y-2  transition-transform duration-[1000ms] transform ${intersectionOfHeading[0] ? 'translate-x-0 opacity-100' : 'translate-x-1/4 opacity-0'} `}>
                     <div className="flex md:mt-10 mt-5 md:mr-8 md:ml-5 md:w-[40%]">
                         <img className="mr-3 md:mr-6 md:h-2/3 h-2/5" src="images/Lens.png" />
                         <p className="text-xs md:text-base"><span className="text-xs font-bold md:text-base">SEARCH </span>for vital services for company  </p>
                     </div>
-                    <div className="flex md:mt-10 mr-8 md:ml-5 md:w-[40%]">
-                        <img className="mr-3 md:mr-6 md:h-2/3 h-2/5" src="images/Connect.webp" />
+                    <div className="flex md:mt-10 mr-8 md:ml-5 justify-center md:w-[40%]">
+                        <img className="mr-3 md:mr-6  md:h-2/3 h-1/5" src="images/Connect.webp" />
                         <p className="text-xs md:text-base"><span className="text-xs font-bold md:text-base ">CONNECT </span>with the resources to meet your business needs </p>
                     </div>
                     <div className="flex md:mt-10 mr-8 md:ml-5 md:w-[40%]">
@@ -59,7 +59,7 @@ export default function Features() {
                         <li  style={{transitionDelay:"2500ms",transitionProperty: "opacity",  transitionDuration: "0.5s" }} className={` transition-transform duration-[1000ms] transform ${intersectionOfHeading && intersectionOfHeading[0] ? 'translate-x-0 opacity-100' : 'translate-x-1/4 opacity-0'} flex justify-end my-2`} ><img src="images/Chat-bubble4.png" /></li>
                         <li  style={{transitionDelay:"500ms",transitionProperty: "opacity",  transitionDuration: "0.5s" }} className={` transition-transform duration-[1000ms] transform ${intersectionOfHeading && intersectionOfHeading[0] ? 'translate-x-0 opacity-100' : 'translate-x-1/4 opacity-0'} flex justify-end my-2`} >
                             <div className="flex justify-center">
-                                <img src="images/Teacher.webp" />
+                                <img className="relative l-10 md:block" src="images/Teacher.webp" />
                                 <img style={{transitionDelay:"3500ms",transitionProperty: "opacity",  transitionDuration: "0.5s" }} className={` transition-transform duration-[1000ms] transform ${intersectionOfHeading && intersectionOfHeading[0] ? 'translate-x-0 opacity-100' : 'translate-x-1/4 opacity-0'} h-fit `} src="images/Chat-bubble5.png" />
                             </div>
                         </li>

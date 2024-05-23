@@ -6,7 +6,7 @@ import Features from "../Components/Home/Features";
 import Footer from "../Components/Footer";
 export default function Home(){
     return(
-        <div>
+        <div className="space-y-10">
         <div className=" bg-opacity-5 bg-[linear-gradient(74.71deg,_#FEDDEE36_0%,_#FCF6FC6a_31.77%,_#C5EAED36_64.58%,_#FDDDFE36_100%)]">
             <Header/>
             <SearchComponent />

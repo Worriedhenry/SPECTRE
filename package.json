@@ -12,6 +12,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.0",
     "axios": "^1.5.1",
+    "dotenv": "^16.4.5",
     "immer": "^10.0.4",
     "jodit-react": "^4.0.25",
     "prettier-plugin-tailwindcss": "^0.5.11",
