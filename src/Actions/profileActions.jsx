@@ -5,7 +5,7 @@ const getProfile= createAsyncThunk(
     'user/getProfile',
     async ({userId}, { rejectWithValue }) => {
         try {
-            const res = await axios.get("http://localhost:3001/user/getprofile/"+ userId)
+            const res = await axios.get(import .meta.env.VITE_BACKEND+"/user/getprofile/"+ userId)
             const {email,username,profilePic}=res.data
             return res.data
 
@@ -23,7 +23,7 @@ const getContact= createAsyncThunk(
     'user/getContact',
     async ({userId}, { rejectWithValue }) => {
         try {
-            const res = await axios.get("http://localhost:3001/user/getcontact/"+ userId)
+            const res = await axios.get(import .meta.env.VITE_BACKEND+"/user/getcontact/"+ userId)
             return res.data
 
         } catch (error) {
@@ -41,7 +41,7 @@ const getWorkHistory= createAsyncThunk(
     async ({userId}, { rejectWithValue }) => {
         try {
            
-            const res = await axios.get("http://localhost:3001/user/getworkhistory/"+ userId)
+            const res = await axios.get(import .meta.env.VITE_BACKEND+"/user/getworkhistory/"+ userId)
             console.log(res.data)
             return res.data
 
@@ -59,7 +59,7 @@ const getServices= createAsyncThunk(
     'user/getServices',
     async ({userId}, { rejectWithValue }) => {
         try {
-            const res = await axios.get("http://localhost:3001/user/getservices/"+ userId)
+            const res = await axios.get(import .meta.env.VITE_BACKEND+"/user/getservices/"+ userId)
             return res.data
 
         } catch (error) {

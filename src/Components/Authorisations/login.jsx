@@ -7,8 +7,8 @@ import axios from "axios";
 
 const Login = () => {
     const { loading,error,userToken} = useSelector((state) => state.auth)
-    const [email, setEmail] = React.useState("");
-    const [password, setPassword] = React.useState("");
+    const [email, setEmail] = React.useState("demo@gmail.com");
+    const [password, setPassword] = React.useState("Ankit@12345");
     const [rememberMe, setRememberMe] = React.useState(false);
     const navigate = useNavigate();
     const urlParams = new URLSearchParams(window.location.search);

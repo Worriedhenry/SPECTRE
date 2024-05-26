@@ -6,7 +6,7 @@ export default registerUser = createAsyncThunk(
     "auth/login",
     async (data, { rejectWithValue }) => {
         try {
-            console.log(data)
+            // console.log(data)
             
             
             return response.data;
