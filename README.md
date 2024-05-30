@@ -25,7 +25,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="public/images/SPECTRE.png" alt="Logo" width="200" height="140">
+    <img src="public/images/SPECTRE.png" alt="Logo"  height="140">
   </a>
 
   <h3 align="center">SPECTRE</h3>
@@ -107,7 +107,9 @@
 
 - **Intuitive Design**: Spectre’s user interface is designed with simplicity and ease of use in mind. From registration to service posting and searching, every step is streamlined to ensure a seamless experience.
 - **Responsive and Accessible**: The platform is fully responsive, ensuring optimal performance across all devices. Whether you’re on a desktop, tablet, or smartphone, Spectre is accessible and functional.
+- **Infinite Scroll**: The platform uses infinite scroll to load the content for all pages ensuring faster query results and smoother experience for user and optimal use of bandwidth
 
+  
 ### How It Works:
 
 1. **Register and Login**: Sign up for an account or log in if you already have one. Create a detailed profile to start offering or searching for services.
@@ -225,7 +227,7 @@ See the [open issues](https://github.com/Worriedhenry/SPECTRE/issues) for a full
 <!-- CONTACT -->
 ## Contact
 
-Ankit Sharma - [@your_twitter](https://twitter.com/your_username) - kaushinkankitsharma05@gmail.com
+Ankit Sharma - [@linkedin](https://www.linkedin.com/in/ankit-sharma-97a18224b/) - kaushinkankitsharma05@gmail.com
 
 Project Link: https://github.com/Worriedhenry/SPECTRE
 
