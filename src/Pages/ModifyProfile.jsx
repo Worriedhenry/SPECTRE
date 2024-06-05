@@ -5,10 +5,10 @@ import ModedUserDetails from "../Components/Profile/ModifiableUserDetails";
 import Footer from "../Components/Footer";
 import RightProfile from "../Components/Profile/RighProfile";
 import UserDetails from "../Components/Profile/UserDetails";
-const ModifyProfilePage = () => {
+const ModifyProfilePage = ({socket}) => {
     return (
         <div className="divide-y bg-slate-100">
-            <Header />
+            <Header socket={socket} />
             <div className="flex justify-center p-2 space-x-2">
                 <ModedUserDetails />
             </div>

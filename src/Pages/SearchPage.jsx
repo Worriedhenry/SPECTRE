@@ -7,7 +7,7 @@ import Filters from "../Components/Search/Filters";
 import { useNavigate,useSearchParams } from "react-router-dom"
 
 
-const SearchPage = () => {
+const SearchPage = ({socket}) => {
     const [services, setServices] = useState(null);
     const [searchParams, setSearchParams] = useSearchParams();
     const [searchTerm, setSearchTerm] = useState(searchParams.get("query")?searchParams.get("query"):"");
@@ -74,7 +74,7 @@ const SearchPage = () => {
 
     return (
         <div className="flex flex-col min-h-screen bg-slate-100">
-            <Header />
+            <Header socket={socket} />
             {/* <div className="flex flex-grow w-full p-5 bg-black " > */}
             <div className=" w-full bg-[linear-gradient(95.74deg,_#9400D3_-7.82%,_#0076CE_143.96%)]  py-5 flex" >
                 <div class=" mx-auto rounded-lg w-full overflow-hidden ">
@@ -94,7 +94,7 @@ const SearchPage = () => {
                     </div>
                 </div>
             </div>
-            <div className="flex justify-center w-full pt-5 m-0 min-h-fit md:mb-5 md:space-x-7  ">
+            <div className="flex justify-center w-full pt-5 m-0 min-h-fit md:mb-5 md:space-x-7 ">
                 <div className="hidden min-h-full p-2 bg-white shadow-xl md:w-1/6 rounded-2xl min-h-48 ">
                     <Filters/>
 

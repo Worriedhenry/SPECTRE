@@ -1,4 +1,4 @@
-import {useEffect} from 'react'
+import {useEffect,useState} from 'react'
 import './App.css'
 import Home from './Pages/Home'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -15,14 +15,33 @@ import Tasks from './Pages/Tasks';
 import FullTasks from './Pages/FullTask';
 import {useSelector,useDispatch} from 'react-redux'
 import axios from 'axios'
+import { initiatConnection } from './Reducers/chataSlice';
+import {io} from "socket.io-client"
 
 import RestrictedRoutes from './Pages/Restricted';
 import { veriyUser } from './Actions/authAction';
 import {stopLoading,logout} from './Reducers/authSlice'
 export default function App() {
-  const {userToken}=useSelector(state=>state.auth)
-
+  const {userToken,userId}=useSelector(state=>state.auth)
   const dispatch=useDispatch()
+  const URL = import.meta.env.VITE_BACKEND
+  const socketIo = io(URL,{
+    auth: { userId },
+    autoConnect: false,
+    transports: ['websocket']
+  })
+  const [socket,setSocket]=useState(null)
+  useEffect(()=>{
+    if(userId){
+      setSocket(socketIo.connect())
+      
+    }
+    return ()=>{
+      socketIo.disconnect()
+    }
+  },[userId])
+
+
 
   useEffect(() => {
     const LocalJwtToken=localStorage.getItem("spectre-secret")
@@ -58,16 +77,16 @@ export default function App() {
       <Routes>
         <Route path='service/:serviceId' element={<Profile />} />
         <Route path='search' element={<SearchPage />} />
-        <Route path='chats' element={<RestrictedRoutes Component={<ChatPage />} condition={userToken} otherwise={<LoginPage />} />} />
-        <Route path='login' element={<RestrictedRoutes Component={LoginPage} condition={!userToken} otherwise="/" />} />
-        <Route path='register' element={<RestrictedRoutes Component={RegisterPage } condition={!userToken} otherwise={"/"} />} />
-        <Route path='profile/:userId' element={<RestrictedRoutes Component={ProfilePage } condition={userToken} otherwise="/login"  />} />
-        <Route path='contact' element={<ContactPage />} />
-        <Route path='modify/profile' element={<RestrictedRoutes Component={ModifyProfilePage} condition={userToken} otherwise="/login" next="/modify/profile" />} />
-        <Route path='modify/service' element={<RestrictedRoutes Component={ModifyServicePage } condition={userToken} otherwise="/login" next="/service/edit/:serviceId" />} />
-        <Route path='profile/tasks' element={<RestrictedRoutes Component={Tasks } condition={userToken} otherwise="/login" next={"/profile/tasks"} />} /> 
-        <Route path='profile/viewtask/:taskId' element={<RestrictedRoutes Component={FullTasks} condition={userToken} otherwise="/login" next={"/profile/viewtask"} />} /> 
-        <Route path='*' element={<Home />} />
+        <Route path='chats' element={<RestrictedRoutes Component={ChatPage } socket={socket} condition={userToken} otherwise={"/login"} />} />
+        <Route path='login' element={<RestrictedRoutes Component={LoginPage}  socket={socket} condition={!userToken} otherwise="/" />} />
+        <Route path='register' element={<RestrictedRoutes Component={RegisterPage } socket={socket} condition={!userToken} otherwise={"/"} />} />
+        <Route path='profile/:userId' element={<RestrictedRoutes Component={ProfilePage } socket={socket} condition={userToken} otherwise="/login"  />} />
+        <Route path='contact' element={<ContactPage socket={socket} />} />
+        <Route path='modify/profile' element={<RestrictedRoutes Component={ModifyProfilePage} socket={socket} condition={userToken} otherwise="/login" next="/modify/profile" />} />
+        <Route path='modify/service' element={<RestrictedRoutes Component={ModifyServicePage } socket={socket} condition={userToken} otherwise="/login" next="/service/edit/:serviceId" />} />
+        <Route path='profile/tasks' element={<RestrictedRoutes Component={Tasks } socket={socket} condition={userToken} otherwise="/login" next={"/profile/tasks"} />} /> 
+        <Route path='profile/viewtask/:taskId' element={<RestrictedRoutes Component={FullTasks} socket={socket} condition={userToken} otherwise="/login" next={"/profile/viewtask"} />} /> 
+        <Route path='*' element={<Home socket={socket} />} />
       </Routes>
     </BrowserRouter>
     

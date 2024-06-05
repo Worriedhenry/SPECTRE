@@ -1,11 +1,11 @@
-import {configureStore} from "@reduxjs/toolkit"
+import { configureStore } from "@reduxjs/toolkit"
 import authReducer from "./Reducers/authSlice.jsx"
-import userReducer from "./Reducers/userSlice.jsx" 
+import chatReducer from "./Reducers/chataSlice.jsx"
 
 export default configureStore({
     reducer: {
         auth: authReducer,
-        user: userReducer,
+        chats: chatReducer
     },
-    
+
 })     

@@ -7,7 +7,7 @@ import {useSelector,useDispatch} from 'react-redux'
 import Footer from "../Components/Footer";
 import RightProfile from "../Components/Profile/RighProfile";
 import UserDetails from "../Components/Profile/UserDetails";
-const ProfilePage = () => {
+const ProfilePage = ({socket}) => {
     const [data,setData]=useState(false)
     const [loading,setLoading]=useState(false)
     
@@ -31,7 +31,7 @@ const ProfilePage = () => {
     }
     return (
         <div className="divide-y bg-slate-100 ">
-            <Header />
+            <Header socket={socket} />
             <div className="flex p-2 m-1 space-x-2">
                 <RightProfile data={data}  />
                 <UserDetails data={data}  />

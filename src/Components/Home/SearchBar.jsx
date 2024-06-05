@@ -10,13 +10,7 @@ export default function SearchComponent() {
     const [suggestions, setSuggestions] = useState([]);
 
     const navigate=useNavigate()
-    useEffect(() => {
-        axios.get(import .meta.env.VITE_BACKEND+'/searchAll')
-            .then((response) => setCAData(response.data))
-            .catch((error) => console.error(error));
-    }, []);
-
-
+    
 
     useEffect(() => {
         // I want to implemet debounce here
@@ -24,7 +18,6 @@ export default function SearchComponent() {
             axios
             .get(import .meta.env.VITE_BACKEND+`/searchname/${searchTerm}`)
             .then((response) => {
-              console.log(response.data);
               setSuggestions(response.data);
             });
           }, 700)
@@ -56,7 +49,7 @@ export default function SearchComponent() {
                     Find <span className="text-transparent bg-clip-text bg-[linear-gradient(90.05deg,_#0076CE_43.35%,_#9400D3_65.11%)]  md:text-6xl ">Services</span> available online
                 </p>
                 <p className=" text-[#616161] mt-5 text-xs md:text-base ">
-                    <span className="text-sm font-bold  md:text-xl">Connect</span> with us where your services are listed and visible to a myriad of businesses seeking services
+                    <span className="text-sm font-bold md:text-xl">Connect</span> with us where your services are listed and visible to a myriad of businesses seeking services
                 </p>
                 <div className="mt-12">
                     <form onSubmit={handleSearch}>

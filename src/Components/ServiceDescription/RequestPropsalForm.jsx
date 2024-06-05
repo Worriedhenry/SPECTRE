@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-import {useSelector} from "react-redux"
-import {useNavigate} from "react-router-dom";
+import { useSelector } from "react-redux"
+import { useNavigate } from "react-router-dom";
 const RequestedPropsalPage = ({ setActiveTabs, serviceName, serviceId, serviceProviderName, serviceProviderId }) => {
     const [tags, setTags] = useState(new Set(["Fresher"]))
     const [proposalBrief, setProposalBrief] = useState("")
@@ -11,10 +11,11 @@ const RequestedPropsalPage = ({ setActiveTabs, serviceName, serviceId, servicePr
     const [proposedDeadline, setProposedDeadline] = useState("N/A")
     const [referenceLink, setReferenceLink] = useState("")
     const [paymentMethod, setPaymentMethod] = useState("N/A")
-    const date=new Date()
-    const {userId}=useSelector((state)=>state.auth)
-
-    const navigate=useNavigate()
+    const date = new Date()
+    const { userId } = useSelector((state) => state.auth)
+    const {socket} = useSelector((state)=>state.chats) 
+    
+    const navigate = useNavigate()
 
     /**
      * Function to add a tag to the set of tags if it doesn't already exist.
@@ -53,23 +54,31 @@ const RequestedPropsalPage = ({ setActiveTabs, serviceName, serviceId, servicePr
 
     }
 
-    const handleFormSubmit =async (e) => {
+    const handleFormSubmit = async (e) => {
         e.preventDefault()
-        const res = await axios.post(import .meta.env.VITE_BACKEND+"/proposal/create", {
+        const res = await axios.post(import.meta.env.VITE_BACKEND + "/proposal/create", {
             service: serviceId,
-            serviceProvider:serviceProviderId,
-            client:userId,
+            serviceProvider: serviceProviderId,
+            client: userId,
             proposalBrief,
             referenceLink,
             proposedPrice,
             proposedCurrency,
             paymentMethod,
             proposedDeadline,
-            logs:[date.toString()+" - Proposal Requested"]
+            logs: [date.toString() + " - Proposal Requested"]
+        })
+        if (res.status === 201) {
+            const addRoom = await axios.post(import.meta.env.VITE_BACKEND + "/chats/createroom", {
+                proposalId: res.data._id,
+                client: userId,
+                serviceProvider: serviceProviderId
             })
-         if (res.status===201){
-            navigate("/profile/"+userId+"/?tab=3")
-         }   
+            if (addRoom.status === 201) {
+                socket.emit("new room", { clientId: userId, serviceProviderId: serviceProviderId, proposalId: res.data.id })
+                navigate("/profile/" + userId + "/?tab=3")
+            }
+        }
 
     }
 
@@ -93,7 +102,7 @@ const RequestedPropsalPage = ({ setActiveTabs, serviceName, serviceId, servicePr
                     <div>
                         <label for="password" class="block pb-0 text-sm md:text-base font-medium text-gray-900 mb-0">Brief Description</label>
                         <p className="pt-0 mt-0 mb-2 text-xs text-slate-400"> Enter a breif description of what you need. </p>
-                        <textarea type="text"  name="about" id="password" value={proposalBrief} onChange={(e) => setProposalBrief(e.target.value)} placeholder="I would like to ...." class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 " required />
+                        <textarea type="text" name="about" id="password" value={proposalBrief} onChange={(e) => setProposalBrief(e.target.value)} placeholder="I would like to ...." class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 " required />
                     </div>
                     <div className="flex w-full space-x-3">
                         <div>
@@ -131,10 +140,10 @@ const RequestedPropsalPage = ({ setActiveTabs, serviceName, serviceId, servicePr
                         </div>
                     </div>
                     <div>
-                    <label for="Live Link" class="block mb-0 text-xs md:text-sm font-medium text-gray-900 ">References (optional)  </label>
+                        <label for="Live Link" class="block mb-0 text-xs md:text-sm font-medium text-gray-900 ">References (optional)  </label>
                         <p className="pt-0 mt-0 mb-2 text-xs text-slate-400">Add link to References </p>
-                        
-                        <input type="url" name="referenceLink " value={referenceLink} onChange={(e)=>setReferenceLink(e.target.value)}  class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  focus:ring-primary-600 focus:border-primary-600 block md:w-full p-2.5 " placeholder="Dropbox/Drive/Live"  />
+
+                        <input type="url" name="referenceLink " value={referenceLink} onChange={(e) => setReferenceLink(e.target.value)} class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  focus:ring-primary-600 focus:border-primary-600 block md:w-full p-2.5 " placeholder="Dropbox/Drive/Live" />
                     </div>
                     <div className="flex space-x-4">
                         <button type="submit" class="w-1/2 bg-[linear-gradient(95.74deg,_#0076CE_-7.82%,_#9400D3_143.96%)] text-white bg-primary-600 hover:bg-[linear-gradient(95.74deg,_#9400D3_-7.82%,_#0076CE_143.96%)]      focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Send Proposal</button>

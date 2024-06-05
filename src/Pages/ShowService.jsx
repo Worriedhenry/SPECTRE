@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom"
 import axios from "axios"
 import Loading from "../Components/Loading"
 import ServiceReview from "../Components/ServiceDescription/Revviews"
-export default function ShowService() {
+export default function ShowService({socket}) {
     const [data, setData] = useState(false)
     const { serviceId } = useParams()
     const topic = "More from Micheal";
@@ -26,7 +26,7 @@ export default function ShowService() {
 
     return (
         <div className="">
-            <Header />
+            <Header socket={socket} />
             {!data ? <div><Loading/></div> :
                 <>
                     <SearchResult data={data} serviceId={serviceId} />
