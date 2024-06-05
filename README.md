@@ -1,24 +1,4 @@
-<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
 <a name="readme-top"></a>
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Don't forget to give the project a star!
-*** Thanks again! Now go create something AMAZING! :D
--->
-
-
-
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
-
 
 
 <!-- PROJECT LOGO -->
@@ -33,7 +13,6 @@
   <p align="center">
     Discover, connect, create
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="https://mcs-hanr.onrender.com">View Demo</a>
@@ -77,8 +56,6 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
 
 ---
 
@@ -102,7 +79,8 @@
 
 4. **Future Enhancements**:
    - **Blogging Capabilities**: In upcoming updates, users will have the ability to write and share blogs. This feature will allow providers to demonstrate expertise, share industry insights, and engage with the community in meaningful ways.
-
+  
+ 
 ### User Experience:
 
 - **Intuitive Design**: Spectre’s user interface is designed with simplicity and ease of use in mind. From registration to service posting and searching, every step is streamlined to ensure a seamless experience.
@@ -214,7 +192,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 - [x] Add Profile page
 - [x] Add Search Page
 - [x] Add proposal functionality 
-- [ ] Add Chat functionality and page
+- [x] Add Chat functionality and page
 - [ ] Add blogs functionality
 - [ ] Add filters for search
     
