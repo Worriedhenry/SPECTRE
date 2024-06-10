@@ -12,7 +12,7 @@ const initialState = {
   userToken: false,
   error: null,
   userId: null,
-  success: false,
+  connection: false,
 }
 
 const authSlice = createSlice({
@@ -49,6 +49,9 @@ const authSlice = createSlice({
     },
     updateProfilePic: (state,action) => {
       state.profilePic=action.payload
+    },
+    connect:(state)=>{
+      state.connection=true
     }
   },
   /**
@@ -119,5 +122,5 @@ const authSlice = createSlice({
       })
      }
 })
-export const { setUserToken, logout, stopLoading , showError, updateProfilePic } = authSlice.actions;
+export const { setUserToken, logout, stopLoading , showError, updateProfilePic,connect } = authSlice.actions;
 export default authSlice.reducer;
