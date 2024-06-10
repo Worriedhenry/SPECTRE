@@ -1,4 +1,3 @@
-<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
 <a name="readme-top"></a>
 
 
@@ -16,7 +15,6 @@
   <p align="center">
     Discover, connect, create
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="https://mcs-hanr.onrender.com">View Demo</a>
@@ -61,7 +59,6 @@
 ## About The Project
 
 
-
 ---
 
 ## Spectre: Your Gateway to Diverse Online Services
@@ -84,7 +81,8 @@
 
 4. **Future Enhancements**:
    - **Blogging Capabilities**: In upcoming updates, users will have the ability to write and share blogs. This feature will allow providers to demonstrate expertise, share industry insights, and engage with the community in meaningful ways.
-
+  
+ 
 ### User Experience:
 
 - **Intuitive Design**: Spectre’s user interface is designed with simplicity and ease of use in mind. From registration to service posting and searching, every step is streamlined to ensure a seamless experience.
