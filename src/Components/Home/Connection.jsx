@@ -6,7 +6,7 @@ export default function connection() {
 
     const dispatch = useDispatch()
     const { connection } = useSelector((state) => state.auth)
-    const [connectionState, setConnectionState] = useState(false)
+    const [connectionState, setConnectionState] = useState(connection)
     useEffect(() => {
         if (connection) return
         axios.get(import.meta.env.VITE_BACKEND + "/connection").then((res) => {
@@ -26,7 +26,7 @@ export default function connection() {
 
     // console.log(connection)
     return (
-        <div className={`${connectionState ? "hidden" : "block"}   top-0 w-full z-99`}>
+        <div className={`${connectionState  ? "hidden" : "block"}   top-0 w-full z-99`}>
             {!connection && <h1 className="w-full py-2 font-medium text-center bg-yellow-300 animate-pulse">Connecting . . .</h1>}
             {connection && <h1 className="w-full py-2 font-medium text-center bg-green-300 animate-bounce">Connected</h1>}
         </div>
