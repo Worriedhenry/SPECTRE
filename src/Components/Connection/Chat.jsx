@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux'
-
+import { useNavigate } from "react-router-dom";
 import Loading from "../Loading";
 import { addNotification } from "../../Reducers/chataSlice"
 import axios from "axios"
@@ -10,14 +10,13 @@ const ChatComponent = ({ socket }) => {
     const { chatRoom, roomDetails, notifications } = useSelector(state => state.chats)
     const [data, setData] = useState(null)
     const chatBox = useRef()
+    const navigate=useNavigate()
     const dispatch = useDispatch()
     useEffect(() => {
         if (chatRoom) {
             axios.get(import.meta.env.VITE_BACKEND + "/chats/" + chatRoom + "/1").then((res) => {
                 setData(res.data)
-
-            }
-            )
+            })
         }
     }, [chatRoom])
 
@@ -81,7 +80,7 @@ const ChatComponent = ({ socket }) => {
                         </div>
                         <div className="flex flex-col leading-tight">
                             <div className="flex items-center mt-1 text-xl">
-                                <span className="mr-3 text-sm font-medium text-gray-700 md:text-xl">{userId == roomDetails.client._id ? roomDetails.serviceProvider.username : roomDetails.client.username}</span>
+                                <span onClick={() => navigate(`/profile/${userId == roomDetails.client._id ? roomDetails.serviceProvider._id : roomDetails.client._id}`)} className="mr-3 text-sm font-medium text-gray-700 cursor-pointer md:text-xl">{userId == roomDetails.client._id ? roomDetails.serviceProvider.username : roomDetails.client.username} </span>
                             </div>
                             <span className="text-xs font-medium text-slate-400">{roomDetails.service.serviceName}</span>
                         </div>
@@ -92,6 +91,7 @@ const ChatComponent = ({ socket }) => {
                         {roomDetails.proposalStatus == 2 && <p className="text-[#0076CE] font-medium animate-pulse before:content-['*'] before:ml-1 before:text-[#] ">Accepted</p>}
                         {roomDetails.proposalStatus == 3 && <p className="text-[#0076CE] font-medium animate-pulse before:content-['*'] before:ml-1 before:text-[#] ">Submitted</p>}
                         {roomDetails.proposalStatus == 4 && <p className="text-[#]">Closed</p>}
+                        {roomDetails.proposalStatus == -2 && <p className="font-medium text-red-500 animate-pulse">Rejected</p>}
 
                     </div>
                 </div>
@@ -165,7 +165,7 @@ const ChatBubble = ({ data, userId }) => {
         <div className={`flex ${!isSender ? 'items-start justify-start flex-row-reverse w-fit max-w-[75%] md:max-w-[50%] ' : ' items-end justify-end flex-row pl-[25%]'} `}>
             <div className="flex flex-col items-end order-1 max-w-xs mx-2 text-xs">
                 <div><span className={`px-4 py-2 rounded-lg inline-block rounded-br-none md:text-sm m-0 font-medium ${isSender ? 'bg-[#0076CE]' : 'bg-[#9400D3]'}  text-white `}>{data.message}</span></div>
-                <div className="text-[0.5rem] p-0 m-0">{data.createdAt.substring(0,10)}</div>
+                <div className="text-[0.5rem] p-0 m-0">{data.createdAt.substring(0, 10)}</div>
             </div>
             <img src={data.senderId == data.clientId ? roomDetails.client.profilePic : roomDetails.serviceProvider.profilePic} alt="My profile" className="order-2 w-6 h-6 rounded-full" />
 
