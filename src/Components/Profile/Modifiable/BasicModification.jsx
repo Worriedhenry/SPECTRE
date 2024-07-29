@@ -31,7 +31,7 @@ const BasicModification = () => {
     }
 
     useEffect(() => {
-        axios.get(import .meta.env.VITE_BACKEND`/user/getbasic/${userId}`).then((res) => {
+        axios.get(import.meta.env.VITE_BACKEND + `/user/getbasic/${userId}`).then((res) => {
 
             setFullname(res.data.fullname)
             setUsername(res.data.username)
@@ -177,7 +177,7 @@ const BasicModification = () => {
                         <option key={index} value={option}>{option}</option>
                     ))}
                 </select>
-                <div className=" max-h-32 w-full align-top bg-slate-100 flex flex-wrap">
+                <div className="flex flex-wrap w-full align-top max-h-32 bg-slate-100">
                     {skills && Array.from(skills).map((skill) => <div className="h-fit">
                         <span id="badge-dismiss-default" class="inline-flex items-center px-2 py-1 me-2 text-sm font-medium  bg-[linear-gradient(95.74deg,_#0076CE_-7.82%,_#9400D3_143.96%)] rounded  text-white m-1">
                             {skill}

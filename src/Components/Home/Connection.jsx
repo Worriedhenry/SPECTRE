@@ -16,7 +16,7 @@ export default function connection() {
                 setTimeout(() => {
                     setConnectionState(true)
                     // setConnectionState(false)
-                },1200)
+                },200)
             }
             else {
                 alert("connection With Backend Failed , Please Refresh The Page")
