@@ -7,14 +7,13 @@ import { logout } from "../Reducers/authSlice";
 import { addNotification } from "../Reducers/chataSlice"
 
 import { useDispatch, useSelector } from "react-redux";
-export default function ({socket}) {
+export default function ({ socket }) {
     const navigate = useNavigate();
 
     const dispatch = useDispatch();
     const { profilePic, userToken, userId } = useSelector((state) => state.auth);
     const { notifications } = useSelector((state) => state.chats);
     const [notification, setNotification] = useState(0)
-    // I want to set notification as sum of values of notifications
 
     useEffect(() => {
         if (Object.values(notifications).length > 0) {
@@ -23,23 +22,21 @@ export default function ({socket}) {
     }, [notifications])
 
     useEffect(() => {
-        if (socket && window.location.pathsname!="/chats") {
-            
-           const handleMessage=(info)=>{
-            console.log("socket",info,"null")
-                dispatch(addNotification({proposalId:info.proposalId}))
-           }
-
-           socket.on("receive-message", handleMessage)
-        
-
-        return () => {
-            socket.off("receive-message", handleMessage)
+        if (socket && window.location.pathsname != "/chats") {
+            const handleMessage = (info) => {
+                console.log("socket", info, "null")
+                dispatch(addNotification({ proposalId: info.proposalId }))
             }
-    }
-    else{
-        console.log("no socket")
-    }
+
+            socket.on("receive-message", handleMessage)
+
+            return () => {
+                socket.off("receive-message", handleMessage)
+            }
+        }
+        else {
+            console.log("no socket")
+        }
     }, [socket])
 
 
@@ -57,10 +54,60 @@ export default function ({socket}) {
                     <li onClick={() => navigate("/")}>
                         <img className="w-24 max-w-full max-h-full cursor-pointer md:w-32 " src="/images/SPECTRE.webp" />
                     </li>
-                    <li title="Under development" className="flex cursor-not-allowed "><span className="font-bold text-[0.6rem] md:text-base">Solutions</span><span><img className="w-4 md:w-auto" src='/images/Down_arrow.png' /></span></li>
-                    <li title="Under development" className="flex cursor-not-allowed"><span className="text-[0.6rem] font-bold md:text-base">Features</span><span><img className="w-4 md:w-auto" src='/images/Down_arrow.png' /></span></li>
-                    <li title="Under development" className="flex cursor-not-allowed"><span className="text-[0.6rem] font-bold md:text-base">Blogs</span><span><img className="w-4 md:w-auto" src='/images/Down_arrow.png' /></span></li>
-                    <li title="Under development" className="flex cursor-not-allowed"><span className="text-[0.6rem] font-bold md:text-base">About</span><span><img className="w-4 md:w-auto" src='/images/Down_arrow.png' /></span></li>
+                    <li  className="flex group relative ">
+                        <span className="text-[0.6rem] font-bold md:text-base">Microservices</span>
+                        <span><img className="w-4 md:w-auto group-hover:rotate-180 " src='/images/Down_arrow.png' />
+                            <ul className="absolute hidden group-hover:block top-6 left-0  space-y-2 divide-y-2 bg-white p-2 rounded-lg shadow-lg">
+                                <li>
+                                    <a href="https://github.com/Worriedhenry/Spectre-Auth-service"  target="_blank" className="text-[0.6rem] font-semibold md:text-base">Authentication </a>
+                                </li>
+                                <li>
+                                    <a href="https://github.com/Worriedhenry/spectre-search-microservices" target="_blank" className="text-[0.6rem] font-semibold md:text-base">Search</a>
+                                </li>
+                                <li>
+                                    <a href="https://github.com/Worriedhenry/Service-microservice" target="_blank" className="text-[0.6rem] font-semibold md:text-base">Services</a>
+                                </li>
+                            </ul>
+                        </span>
+                    </li>
+                    <li  className="flex group relative ">
+                        <span className="text-[0.6rem] font-bold md:text-base">Features</span>
+                        <span><img className="w-4 md:w-auto group-hover:rotate-180 " src='/images/Down_arrow.png' />
+                            <ul className="absolute hidden group-hover:block top-6 left-0 divide-y-2  space-y-2 bg-white p-2 rounded-lg shadow-lg">
+                                <li>
+                                    <a href="https://github.com/Worriedhenry/SPECTRE/blob/main/README.md#key-features" className="text-[0.6rem] font-semibold md:text-base">Key Feature</a>
+                                </li>
+                                
+                            </ul>
+                        </span>
+                    </li>
+                    <li  className="flex group relative ">
+                        <span className="text-[0.6rem] font-bold md:text-base">Blogs</span>
+                        <span><img className="w-4 md:w-auto group-hover:rotate-180 " src='/images/Down_arrow.png' />
+                              <ul className="absolute hidden group-hover:block top-6 left-0 divide-y-2 space-y-2 bg-white p-2 rounded-lg shadow-lg">
+                                <li>
+                                    <a href="https://github.com/Worriedhenry/SPECTRE/blob/main/README.md#getting-started" target="_blank" className="text-[0.6rem] font-semibold md:text-base">Tutorial</a>
+                                </li>
+                                <li>
+                                    <a href="https://github.com/Worriedhenry/SPECTRE/blob/main/README.md#roadmap" target="_blank" className="text-[0.6rem] font-semibold md:text-base">Roadmap</a>
+                                </li>
+                            </ul>
+                        </span>
+                    </li>
+                    
+                    <li  className="flex  group relative ">
+                        <span className="text-[0.6rem] font-bold md:text-base">About</span>
+                        <span><img className="w-4 md:w-auto group-hover:rotate-180 " src='/images/Down_arrow.png' />
+                            <ul className="absolute hidden group-hover:block top-6 left-0 divide-y-2 space-y-2 bg-white p-2 rounded-lg shadow-lg">
+                                <li>
+                                    <a href="https://github.com/Worriedhenry/SPECTRE/blob/main/README.md" target="_blank" className="text-[0.6rem] font-semibold md:text-base">Readme</a>
+                                </li>
+                                <li>
+                                    <button onClick={()=>navigate("/contact")} className="text-[0.6rem] font-semibold md:text-base">Contact</button>
+                                </li>
+                            </ul>
+                        </span>
+                    </li>
                 </ul>
             </div>
             <div className={`flex space-x-3 ${userToken ? "hidden" : "block"}`}>
