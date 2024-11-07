@@ -7,34 +7,6 @@ import { FaMedal } from "react-icons/fa";
 import Loading from '../Loading';
 const DetailedAbout = ({data}) => {
 
-//   const data={
-//     name:"Micheal Jackson",
-//     location:["301 Vikas Nagar",", Mumbai",", India"],
-//     joined:"2022",
-//     avgResponse:"30min",
-//     about:"I will do business evaluation and corporate services Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus eaque non illo iste repellendus est. Doloremque corporis velit vero illo, cum, iusto esse non quo laboriosam quas, dolore explicabo id",
-//     services:["Website Development","UI/UX","Maintanence"],
-//     benefits:["Website Development","UI/UX","Maintanence"],
-//     education:[{
-//       startYear:"2020",
-//       endYear:"2025",
-//       degree:"Bachelor of Science",
-//       university:"Stanford University",
-//       ocation:"surat,gujrat",
-//       grades:"4.0"  
-//     },
-//     {
-//       startYear:"2020",
-//       endYear:"2022",
-//       degree:"Bachelor of Science",
-//       university:"Indian Institute of Information Technology",
-//       location:"surat,gujrat",
-//       grades:"4.0"  
-//     }  
-  
-//   ]
-// }
-
   if(!data){
     return (
       <Loading/>

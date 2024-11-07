@@ -5,7 +5,7 @@ const createRoom= createAsyncThunk(
     async ({client,serviceProvider,proposalId,socket}, { rejectWithValue }) => {
         try {
 
-            const res = await axios.post(import .meta.env.VITE_BACKEND+"/chats/createroom", {client,serviceProvider,proposalId}) 
+            const res = await axios.post((import .meta.env.VITE_BACKEND_CHATS ||import .meta.env.VITE_BACKEND)+"/chats/createroom", {client,serviceProvider,proposalId}) 
             return res.data
         } catch (error) {
             if (error.response && error.response.data.message) {

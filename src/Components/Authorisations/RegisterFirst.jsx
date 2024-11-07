@@ -23,7 +23,7 @@ const Register = ({ setActiveTabs, username, setUsername, fullname, setFullname,
     const handleEmailVerification = async () => {
         if (email) {
             setalertMailCode(300)
-            const res = await axios.get("http://localhost:3001/auth/emailexist/" + email)
+            const res = await axios.get((import .meta.env.VITE_BACKEND_AUTH ||import .meta.env.VITE_BACKEND)+"/auth/emailexist/" + email)
             console.log(res.data)
             if (res.data) {
                 setEmailVerified(true);
@@ -40,7 +40,7 @@ const Register = ({ setActiveTabs, username, setUsername, fullname, setFullname,
     }
     const handleUsernameVerification = async () => {
         if (username) {
-            const res = await axios.get("http://localhost:3001/auth/usernameexist/" + username)
+            const res = await axios.get((import .meta.env.VITE_BACKEND_AUTH ||import .meta.env.VITE_BACKEND)+"/auth/usernameexist/" + username)
 
             if (res.data) {
                 setUsernameVerified(true);
@@ -59,7 +59,7 @@ const Register = ({ setActiveTabs, username, setUsername, fullname, setFullname,
     const handlePhoneVerification = async () => {
         if (phone) {
             setAlertPhoneCode(300)
-            const res = await axios.get("http://localhost:3001/auth/phoneexist/" + phone)
+            const res = await axios.get((import .meta.env.VITE_BACKEND_AUTH ||import .meta.env.VITE_BACKEND)+"/auth/phoneexist/" + phone)
             if (res.data) {
                 setPhoneVerified(true);
                 setAlertPhoneCode(200);

@@ -16,7 +16,7 @@ export default function SearchComponent() {
         // I want to implemet debounce here
         const getData = setTimeout(() => {
             axios
-            .get(import .meta.env.VITE_BACKEND+`/searchname/${searchTerm}`)
+            .get((import.meta.env.VITE_BACKEND_SEARCH || import.meta.env.VITE_BACKEND)+`/searchname/${searchTerm}`)
             .then((response) => {
               setSuggestions(response.data);
             });

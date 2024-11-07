@@ -53,7 +53,7 @@ const RegisterThree = ({ setActiveTabs,imageCloudinfo,setImageCloudinfo,selected
         // setSelectedImage(null);
         setUploading(true);
         setAlertMessageCode(303)
-        const res=await axios.delete("http://localhost:3001/deleteimage/"+imageCloudinfo.publicId)
+        const res=await axios.delete(import .meta.env.VITE_BACKEND+"/deleteimage/"+imageCloudinfo.publicId)
         
         console.log(res.status)
         if(res.status===200){
