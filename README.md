@@ -19,7 +19,7 @@
     <br />
     <a href="https://mcs-hanr.onrender.com">View Demo</a>
     ·
-    <a href="https:/github.com/Worriedhenry/SPECTRE/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
+    <a href="https://github.com/Worriedhenry/MCS-backend">Backend Repo</a>
     ·
     <a href="https://github.com/Worriedhenry/SPECTRE/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
   </p>
