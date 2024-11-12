@@ -69,7 +69,7 @@ const RateModifiation = () => {
     const onSubmit = async (e) => {
         e.preventDefault()
 
-        const res = await axios.post((import .meta.env.VITE_BACKEND_SERVICE ||import .meta.env.VITE_BACKEND)+"/services/create", { serviceName, serviceBrief, serviceTags: [...tags], complexity, workSamples, serviceCost, serviceCostDuration, serviceCostCurrency, serviceDeadline, userToken })
+        const res = await axios.post((import .meta.env.VITE_BACKEND_GATEWAY+"/services" ||import .meta.env.VITE_BACKEND)+"/services/create", { serviceName, serviceBrief, serviceTags: [...tags], complexity, workSamples, serviceCost, serviceCostDuration, serviceCostCurrency, serviceDeadline, userToken })
 
         if (res.status == 200) {
             alert("service added successfully")
@@ -86,7 +86,7 @@ const RateModifiation = () => {
         if (searchParams.get("create") !== "true") {
             console.log("getting service")
             axios
-                .get((import .meta.env.VITE_BACKEND_SERVICE ||import .meta.env.VITE_BACKEND)+"/services/getfullservice/" + serviceId)
+                .get((import .meta.env.VITE_BACKEND_GATEWAY+'/services' ||import .meta.env.VITE_BACKEND)+"/services/getfullservice/" + serviceId)
                 .then(res => {
                     setServiceName(res.data.serviceName)
                     setServiceBrief(res.data.serviceBrief)
@@ -103,7 +103,7 @@ const RateModifiation = () => {
     }, [])
 
     const updateService = async () => {
-        const res = await axios.put((import .meta.env.VITE_BACKEND_SERVICE ||import .meta.env.VITE_BACKEND)+"/services/updateservice/" + serviceId, { serviceId, serviceName, serviceBrief, serviceTags:[...tags], complexity, workSamples, serviceCost, serviceCostDuration, serviceCostCurrency, serviceDeadline })
+        const res = await axios.put((import .meta.env.VITE_BACKEND_GATEWAY+'/services' ||import .meta.env.VITE_BACKEND)+"/services/updateservice/" + serviceId, { serviceId, serviceName, serviceBrief, serviceTags:[...tags], complexity, workSamples, serviceCost, serviceCostDuration, serviceCostCurrency, serviceDeadline })
         if(res.status==204){
             alert("service updated successfully")
             navigate("/service/" + serviceId)
@@ -111,7 +111,7 @@ const RateModifiation = () => {
     }
 
     const deleteService= async ()=>{
-        const res = await axios.delete((import .meta.env.VITE_BACKEND_SERVICE ||import .meta.env.VITE_BACKEND)+"/services/deleteservice/" + serviceId)
+        const res = await axios.delete((import .meta.env.VITE_BACKEND_GATEWAY+'/services' ||import .meta.env.VITE_BACKEND)+"/services/deleteservice/" + serviceId)
         if(res.status==204){
             alert("service deleted successfully")
             navigate("/")

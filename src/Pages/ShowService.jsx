@@ -14,7 +14,7 @@ export default function ShowService({socket}) {
 
     useEffect(() => {
         axios
-            .get((import .meta.env.VITE_BACKEND_SERVICE ||import .meta.env.VITE_BACKEND)+"/services/getservice/" + serviceId)
+            .get((import .meta.env.VITE_BACKEND_GATEWAY+"/services" ||import .meta.env.VITE_BACKEND)+"/services/getservice/" + serviceId)
             .then(res => {
                 if (res.status == 200) {
                     setData(res.data)

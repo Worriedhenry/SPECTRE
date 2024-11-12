@@ -10,7 +10,7 @@ const ServiceSummary = forwardRef(({data,location,profilePic,userId,username},re
     return (
         <div ref={ref} className="flex w-full p-2 space-x-3 border-2 snap-start md:px-2 border-zinc-100 md:h-48 md:py-3 ">
             <div className="justify-center hidden w-1/5 h-full md:flex md:max-w-xs ">
-                <img className="h-full rounded-full aspect-square " src={profilePic?profilePic:"https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?fit=crop&w=800&q=80"} />
+                <img className="h-full rounded-full aspect-square " src={profilePic[0]?profilePic:"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"} />
             </div>
             <div className="md:w-2/3">
                 <p>

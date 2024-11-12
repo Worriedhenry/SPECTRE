@@ -21,11 +21,11 @@ const SearchPage = ({socket}) => {
             setServices(null)
             return 
         }
-        console.log(searchParams.get("query"))
-        axios.get((import.meta.env.VITE_BACKEND_SEARCH || import.meta.env.VITE_BACKEND ) + "/search/"+searchTerm+"/1").then(
+
+        axios.get((import.meta.env.VITE_BACKEND_GATEWAY+ "/search/" || import.meta.env.VITE_BACKEND ) + "/search/" +searchTerm+"/1").then(
             (res) => {
                 setServices(res.data)
-                console.log(res.data)
+                // console.log(res.data)
             }
         ).catch((err) => console.log(err))
 
