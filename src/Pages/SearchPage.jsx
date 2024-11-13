@@ -22,7 +22,7 @@ const SearchPage = ({socket}) => {
             return 
         }
 
-        axios.get((import.meta.env.VITE_BACKEND_GATEWAY+ "/search/" || import.meta.env.VITE_BACKEND ) + "/search/" +searchTerm+"/1").then(
+        axios.get((import.meta.env.VITE_BACKEND_GATEWAY+ "/search" || import.meta.env.VITE_BACKEND ) + "/search/" +searchTerm+"/1").then(
             (res) => {
                 setServices(res.data)
                 // console.log(res.data)
@@ -49,7 +49,7 @@ const SearchPage = ({socket}) => {
 
         return () => {
             if (observer) {
-                observer.disconnect(); // Stop observing when the component unmounts
+                observer.disconnect();
             }
         }
     }, [services, lastElementRef, stopObserver])
@@ -57,7 +57,7 @@ const SearchPage = ({socket}) => {
 
 
     const fetchMoreData = async (currentTotal) => {
-        const res= await axios.get((import.meta.env.VITE_BACKEND_SEARCH || import.meta.env.VITE_BACKEND )+"/search/"+searchTerm+"/"+parseInt(services?.length+1)/5)
+        const res= await axios.get((import.meta.env.VITE_BACKEND_GATEWAY+ "/search" || import.meta.env.VITE_BACKEND )+"/search/"+searchTerm+"/"+parseInt(services?.length+1)/5)
         if(res.data.length!==5){
             setStopObserver(true)
             lastElementRef.current = null
