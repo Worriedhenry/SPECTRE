@@ -10,9 +10,8 @@ export default React.memo(function userServices({ userId, profilePic, location, 
     const [services, setServices] = useState(null)
     const [stopObserver, setStopObserver] = useState(false)
     useEffect(() => {
-        console.log("running")
         axios
-            .get(import .meta.env.VITE_BACKEND+"/user/getservices/" + userId + "/0/3")
+            .get(import .meta.env.VITE_BACKEND_GATEWAY+"/user"+"/user/getservices/" + userId + "/0/3")
             .then(res => {
                 if (res.status == 200) {
                     setServices(res.data)
@@ -45,7 +44,7 @@ export default React.memo(function userServices({ userId, profilePic, location, 
 
 
     const fetchMoreData = (currentTotal) => {
-        axios.get(import .meta.env.VITE_BACKEND+`/user/getservices/${userId}/${currentTotal}/2`).then(res => {
+        axios.get(import .meta.env.VITE_BACKEND_GATEWAY+"/user"+`/user/getservices/${userId}/${currentTotal}/2`).then(res => {
             if (res.status === 200) {
                 if (res.data.length === 0) {
                     lastElementRef.current = null;

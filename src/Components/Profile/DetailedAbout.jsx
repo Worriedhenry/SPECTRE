@@ -18,10 +18,10 @@ const DetailedAbout = ({data}) => {
       <div>
         <table class='min-w-full text-center text-sm font-light'>
           <thead class='font-medium'>
-            <tr>
+            <tr className='space-x-2'>
               <th
                 scope='col'
-                class=' md:py-3   space-x-3 py-1 text-left w-[1/3]   font-bold text-xs md:text-sm'
+                class=' md:py-3 max-w-[33%]  space-x-3 py-1 text-left w-[1/3]   font-bold text-xs md:text-sm'
               >
                 <div className='flex space-x-3'><span className='inline '>FROM</span> <span className='hidden md:inline'><FaLocationDot /></span> </div>
               </th>
@@ -42,8 +42,8 @@ const DetailedAbout = ({data}) => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td class=' line-clamp-3 text-sm md:text-base text-slate-700 text-left py-4 font-medium '>
+            <tr className='space-x-2'>
+              <td class=' max-w-[90%]  line-clamp-3 text-sm md:text-base text-slate-700 text-left py-4 font-medium flex '>
               {data?.user?.location[1]},{data?.user?.location[2]},{data?.user?.location[3]}
               </td>
               <td class='whitespace-nowrap w-1/3 text-sm text-slate-700 md:text-base py-4 text-left font-medium'>

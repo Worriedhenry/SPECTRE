@@ -34,9 +34,6 @@ export default function ({ socket }) {
                 socket.off("receive-message", handleMessage)
             }
         }
-        else {
-            console.log("no socket")
-        }
     }, [socket])
 
 
@@ -54,12 +51,12 @@ export default function ({ socket }) {
                     <li onClick={() => navigate("/")}>
                         <img className="w-24 max-w-full max-h-full cursor-pointer md:w-32 " src="/images/SPECTRE.webp" />
                     </li>
-                    <li  className="flex group relative ">
+                    <li className="flex group relative ">
                         <span className="text-[0.6rem] font-bold md:text-base">Microservices</span>
                         <span><img className="w-4 md:w-auto group-hover:rotate-180 " src='/images/Down_arrow.png' />
                             <ul className="absolute hidden group-hover:block top-6 left-0  space-y-2 divide-y-2 bg-white p-2 rounded-lg shadow-lg">
                                 <li>
-                                    <a href="https://github.com/Worriedhenry/Spectre-Auth-service"  target="_blank" className="text-[0.6rem] font-semibold md:text-base">Authentication </a>
+                                    <a href="https://github.com/Worriedhenry/Spectre-Auth-service" target="_blank" className="text-[0.6rem] font-semibold md:text-base">Authentication </a>
                                 </li>
                                 <li>
                                     <a href="https://github.com/Worriedhenry/spectre-search-microservices" target="_blank" className="text-[0.6rem] font-semibold md:text-base">Search</a>
@@ -70,21 +67,21 @@ export default function ({ socket }) {
                             </ul>
                         </span>
                     </li>
-                    <li  className="flex group relative ">
+                    <li className="flex group relative ">
                         <span className="text-[0.6rem] font-bold md:text-base">Features</span>
                         <span><img className="w-4 md:w-auto group-hover:rotate-180 " src='/images/Down_arrow.png' />
                             <ul className="absolute hidden group-hover:block top-6 left-0 divide-y-2  space-y-2 bg-white p-2 rounded-lg shadow-lg">
                                 <li>
                                     <a href="https://github.com/Worriedhenry/SPECTRE/blob/main/README.md#key-features" className="text-[0.6rem] font-semibold md:text-base">Key Feature</a>
                                 </li>
-                                
+
                             </ul>
                         </span>
                     </li>
-                    <li  className="flex group relative ">
+                    <li className="flex group relative ">
                         <span className="text-[0.6rem] font-bold md:text-base">Blogs</span>
                         <span><img className="w-4 md:w-auto group-hover:rotate-180 " src='/images/Down_arrow.png' />
-                              <ul className="absolute hidden group-hover:block top-6 left-0 divide-y-2 space-y-2 bg-white p-2 rounded-lg shadow-lg">
+                            <ul className="absolute hidden group-hover:block top-6 left-0 divide-y-2 space-y-2 bg-white p-2 rounded-lg shadow-lg">
                                 <li>
                                     <a href="https://github.com/Worriedhenry/SPECTRE/blob/main/README.md#getting-started" target="_blank" className="text-[0.6rem] font-semibold md:text-base">Tutorial</a>
                                 </li>
@@ -94,8 +91,8 @@ export default function ({ socket }) {
                             </ul>
                         </span>
                     </li>
-                    
-                    <li  className="flex  group relative ">
+
+                    <li className="flex  group relative ">
                         <span className="text-[0.6rem] font-bold md:text-base">About</span>
                         <span><img className="w-4 md:w-auto group-hover:rotate-180 " src='/images/Down_arrow.png' />
                             <ul className="absolute hidden group-hover:block top-6 left-0 divide-y-2 space-y-2 bg-white p-2 rounded-lg shadow-lg">
@@ -103,7 +100,7 @@ export default function ({ socket }) {
                                     <a href="https://github.com/Worriedhenry/SPECTRE/blob/main/README.md" target="_blank" className="text-[0.6rem] font-semibold md:text-base">Readme</a>
                                 </li>
                                 <li>
-                                    <button onClick={()=>navigate("/contact")} className="text-[0.6rem] font-semibold md:text-base">Contact</button>
+                                    <button onClick={() => navigate("/contact")} className="text-[0.6rem] font-semibold md:text-base">Contact</button>
                                 </li>
                             </ul>
                         </span>

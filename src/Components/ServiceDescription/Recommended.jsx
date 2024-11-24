@@ -10,7 +10,7 @@ export default function Recommended({ user, topic,serviceId }) {
     
 
     const fetchMoreData = (currentTotal) => {
-        axios.get(import .meta.env.VITE_BACKEND+`/user/getservices/${user._id}/${currentTotal}/2`).then(res => {
+        axios.get(import .meta.env.VITE_BACKEND_GATEWAY+"/user"+`/user/getservices/${user._id}/${currentTotal}/2`).then(res => {
           if (res.status === 200) {
             if (res.data.length === 0) {
               lastElementRef.current = null;
@@ -49,7 +49,7 @@ export default function Recommended({ user, topic,serviceId }) {
 
     useEffect(() => {
         axios
-            .get(import .meta.env.VITE_BACKEND+"/user/getservices/" + user._id+"/0/4")
+            .get(import .meta.env.VITE_BACKEND_GATEWAY+"/user"+"/user/getservices/" + user._id+"/0/4")
             .then(res => {
                 if (res.status == 200) {
                     setServices(res.data)

@@ -20,7 +20,7 @@ export default function SearchComponent() {
             .then((response) => {
               setSuggestions(response.data);
             });
-          }, 700)
+          }, 100)
 
           return () => clearTimeout(getData)
     }, [searchTerm]);

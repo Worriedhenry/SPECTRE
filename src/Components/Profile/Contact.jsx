@@ -18,7 +18,7 @@ const Contact = () => {
 
     async function getContact() {
         setLoading(true)
-        const res = await axios.get(import .meta.env.VITE_BACKEND+"/user/getcontact/" + userId)
+        const res = await axios.get(import .meta.env.VITE_BACKEND_GATEWAY+'/user'+"/user/getcontact/" + userId)
         setLoading(false)
         if (res.status === 200) {
             setData(res.data)
