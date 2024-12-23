@@ -19,9 +19,13 @@
     <br />
     <a href="https://mcs-hanr.onrender.com">View Demo</a>
     ·
-    <a href="https://github.com/Worriedhenry/MCS-backend">Backend Repo</a>
+    <a href="https://github.com/Worriedhenry/MCS-backend">Monolithic Backend Repo</a>
     ·
-    <a href="https://github.com/Worriedhenry/SPECTRE/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
+    <a href="https://github.com/Worriedhenry/API_Gateway/">API GATEWAY</a>
+    .
+    <a href="https://lucid.app/lucidchart/f53ffa89-57ea-4628-94de-a3e2f8513262/edit?viewport_loc=-510%2C-45%2C2836%2C1178%2C0_0&invitationId=inv_e35dcc80-f7d7-41d8-9f67-392db5598a4a">Backend Architecture Diagram </a>
+    .
+    <a href="https://lucid.app/lucidchart/bbe9b7bb-772a-4404-a1c9-649669562b53/edit?invitationId=inv_4df6507c-dcee-4ee2-9d65-922dc8d791a2">Database Design</a>
   </p>
 </div>
 
@@ -71,15 +75,25 @@
    - **Post Your Services**: Easily create detailed listings for your services, complete with descriptions, pricing, and availability. Whether you offer web development, graphic design, content writing, or any other service, Spectre makes it simple to reach a broad audience.
    - **Browse and Search**: Clients can effortlessly search for services using keywords and filters. Our advanced search functionality ensures they find exactly what they need quickly and efficiently.
 
-2. **User Profiles**:
+2. **Role Based User Interace**:  
+    - **Admin Role**
+    - **Editor Role**
+    - **User Role**
+
+3. **Distributed Architecture**:
+    - **API GATEWAY**
+    - **Microservices**
+    - **Separate Monolothic Backend**       
+     
+4. **User Profiles**:
    - **Comprehensive Profiles**: Service providers can build robust profiles, highlighting their skills, experience, and previous work. Profiles also include tags for easy categorization and searchability.
    - **Ratings and Reviews**: Clients can leave feedback and ratings, helping providers build a strong reputation and trust within the community.
 
-3. **Connection and Communication**:
+5. **Connection and Communication**:
    - **Direct Messaging**: Facilitate direct communication between service providers and clients to discuss project details, negotiate terms, and ensure smooth collaboration.
    - **Proposal Requests**: Clients can request proposals for specific services, allowing providers to tailor their offerings to meet exact needs.
 
-4. **Future Enhancements**:
+6. **Future Enhancements**:
    - **Blogging Capabilities**: In upcoming updates, users will have the ability to write and share blogs. This feature will allow providers to demonstrate expertise, share industry insights, and engage with the community in meaningful ways.
   
  
@@ -100,6 +114,7 @@
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 
 
